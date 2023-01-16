@@ -1,9 +1,9 @@
 <template>
   <div>
     <!-- Header -->
-    <div class="header bg-gradient-success py-7 py-lg-8 pt-lg-9">
-      <b-container>
-        <div class="header-body text-center mb-7">
+    <div class="header py-7 py-lg-8 background pt-lg-9">
+      <b-container style="height: 100px">
+        <!-- <div class="header-body text-center mb-7">
           <b-row class="justify-content-center">
             <b-col xl="5" lg="6" md="8" class="px-5">
               <h1 class="text-white">Welcome!</h1>
@@ -13,7 +13,7 @@
               </p>
             </b-col>
           </b-row>
-        </div>
+        </div> -->
       </b-container>
       <div class="separator separator-bottom separator-skew zindex-100">
         <svg
@@ -36,7 +36,7 @@
       <b-row class="justify-content-center">
         <b-col lg="5" md="7">
           <b-card no-body class="bg-secondary border-0 mb-0">
-            <b-card-header class="bg-transparent pb-5">
+            <!-- <b-card-header class="bg-transparent pb-5">
               <div class="text-muted text-center mt-2 mb-3">
                 <small>Sign in with</small>
               </div>
@@ -54,10 +54,10 @@
                   <span class="btn-inner--text">Google</span>
                 </a>
               </div>
-            </b-card-header>
+            </b-card-header> -->
             <b-card-body class="px-lg-5 py-lg-5">
               <div class="text-center text-muted mb-4">
-                <small>Or sign in with credentials</small>
+                <small>Entre com suas credenciais</small>
               </div>
               <validation-observer
                 v-slot="{ handleSubmit }"
@@ -95,14 +95,14 @@
                       type="primary"
                       native-type="submit"
                       class="my-4"
-                      >Sign in</base-button
+                      >Entrar</base-button
                     >
                   </div>
                 </b-form>
               </validation-observer>
             </b-card-body>
           </b-card>
-          <b-row class="mt-3">
+          <!-- <b-row class="mt-3">
             <b-col cols="6">
               <router-link to="/dashboard" class="text-light"
                 ><small>Forgot password?</small></router-link
@@ -113,7 +113,7 @@
                 ><small>Create new account</small></router-link
               >
             </b-col>
-          </b-row>
+          </b-row> -->
         </b-col>
       </b-row>
     </b-container>
@@ -137,3 +137,8 @@ export default {
   },
 };
 </script>
+<style scoped>
+.background {
+  background-color: #0a70b9 !important;
+}
+</style>
