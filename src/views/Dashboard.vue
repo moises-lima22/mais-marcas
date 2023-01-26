@@ -5,57 +5,43 @@
       <b-row>
         <b-col xl="3" md="6">
           <stats-card
-            title="Total traffic"
+            title="Total pedidos abertos"
             type="gradient-red"
-            sub-title="350,897"
-            icon="ni ni-active-40"
+            sub-title="2.550"
+            icon="ni ni-bag-17"
             class="mb-4"
           >
             <template slot="footer">
-              <span class="text-success mr-2">3.48%</span>
-              <span class="text-nowrap">Since last month</span>
+              <!-- <span class="text-success mr-2">3.48%</span> -->
+              <span class="text-nowrap">Janeiro/2023</span>
             </template>
           </stats-card>
         </b-col>
         <b-col xl="3" md="6">
           <stats-card
-            title="Total traffic"
+            title="Dentro do prazo"
             type="gradient-orange"
-            sub-title="2,356"
+            sub-title="2.295"
+            icon="ni ni-watch-time"
+            class="mb-4"
+          >
+            <template slot="footer">
+              <span class="text-success mr-2">90.00%</span>
+              <!-- <span class="text-nowrap">Since last month</span> -->
+            </template>
+          </stats-card>
+        </b-col>
+        <b-col xl="3" md="6">
+          <stats-card
+            title="Atrasado"
+            type="gradient-green"
+            sub-title="255"
             icon="ni ni-chart-pie-35"
             class="mb-4"
           >
             <template slot="footer">
-              <span class="text-success mr-2">12.18%</span>
-              <span class="text-nowrap">Since last month</span>
-            </template>
-          </stats-card>
-        </b-col>
-        <b-col xl="3" md="6">
-          <stats-card
-            title="Sales"
-            type="gradient-green"
-            sub-title="924"
-            icon="ni ni-money-coins"
-            class="mb-4"
-          >
-            <template slot="footer">
-              <span class="text-danger mr-2">5.72%</span>
-              <span class="text-nowrap">Since last month</span>
-            </template>
-          </stats-card>
-        </b-col>
-        <b-col xl="3" md="6">
-          <stats-card
-            title="Performance"
-            type="gradient-info"
-            sub-title="49,65%"
-            icon="ni ni-chart-bar-32"
-            class="mb-4"
-          >
-            <template slot="footer">
-              <span class="text-success mr-2">54.8%</span>
-              <span class="text-nowrap">Since last month</span>
+              <span class="text-danger mr-2">10.00%</span>
+              <!-- <span class="text-nowrap">Since last month</span> -->
             </template>
           </stats-card>
         </b-col>
