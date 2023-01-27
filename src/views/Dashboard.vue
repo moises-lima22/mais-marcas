@@ -48,9 +48,14 @@
       </b-row>
     </base-header>
 
-    <!--Charts-->
+    <!--Main-->
     <b-container fluid class="mt--7">
-      <b-row>
+      <b-row style="min-height: 700px">
+        <b-col xl="4" class="mb-5 mb-xl-0" style="min-height: 200px">
+          <Kanban />
+        </b-col>
+      </b-row>
+      <!-- <b-row>
         <b-col xl="8" class="mb-5 mb-xl-0">
           <card type="default" header-classes="bg-transparent">
             <b-row align-v="center" slot="header">
@@ -107,18 +112,18 @@
             </bar-chart>
           </card>
         </b-col>
-      </b-row>
+      </b-row> -->
       <!-- End charts-->
 
       <!--Tables-->
-      <b-row class="mt-5">
+      <!-- <b-row class="mt-5">
         <b-col xl="8" class="mb-5 mb-xl-0">
           <page-visits-table></page-visits-table>
         </b-col>
         <b-col xl="4" class="mb-5 mb-xl-0">
           <social-traffic-table></social-traffic-table>
         </b-col>
-      </b-row>
+      </b-row> -->
       <!--End tables-->
     </b-container>
   </div>
@@ -132,6 +137,7 @@ import BarChart from "@/components/Charts/BarChart";
 // Components
 import BaseProgress from "@/components/BaseProgress";
 import StatsCard from "@/components/Cards/StatsCard";
+import Kanban from "@/components/Kanban";
 
 // Tables
 import SocialTrafficTable from "./Dashboard/SocialTrafficTable";
@@ -145,6 +151,7 @@ export default {
     StatsCard,
     PageVisitsTable,
     SocialTrafficTable,
+    Kanban,
   },
   data() {
     return {
