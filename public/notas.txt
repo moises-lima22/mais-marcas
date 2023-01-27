@@ -1,0 +1,8 @@
+    Example of methods for notification call
+    notifyTopRight() {
+      this.$notify({
+        verticalAlign: "top",
+        horizontalAlign: "right",
+        message: "Top right",
+      });
+    },
