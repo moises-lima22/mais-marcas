@@ -4,7 +4,7 @@
       <b-col>
         <h6 class="text-uppercase text-muted ls-1 mb-1">Performance</h6>
         <h5 class="h3 mb-0">Total orders</h5>
-        <button @click="t">Teste</button>
+        <base-button @click="notifyTopRight">Teste</base-button>
       </b-col>
     </b-row>
   </card>
@@ -17,8 +17,13 @@ export default {
     Card,
   },
   methods: {
-    t() {
-      this.$notification.succes;
+    notifyTopRight() {
+      this.$notify({
+        type: "success",
+        verticalAlign: "top",
+        horizontalAlign: "right",
+        message: "Top right",
+      });
     },
   },
 };
