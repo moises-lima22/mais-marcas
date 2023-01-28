@@ -43,6 +43,13 @@
             ]"
           />
         </slot>
+        <div v-if="value" class="input-group-append">
+          <span class="input-group-text p-0">
+            <slot name="clearable">
+              <i class="append-icon icon-large" :class="clearableIcon"></i>
+            </slot>
+          </span>
+        </div>
         <div v-if="appendIcon || $slots.append" class="input-group-append">
           <span class="input-group-text p-0">
             <slot name="append">
@@ -118,6 +125,10 @@ export default {
       description: "Input type",
       default: "text",
     },
+    clearableIcon: {
+      type: String,
+      description: "clearableIcon icon (right)",
+    },
     appendIcon: {
       type: String,
       description: "Append icon (right)",
@@ -187,7 +198,7 @@ export default {
 </script>
 <style scoped>
 .append-icon {
-  margin-right: 12px;
+  /* margin-right: 12px; */
   background-color: #fff;
   border-radius: 50%;
   padding: 0.5rem;
@@ -197,5 +208,9 @@ export default {
 .append-icon:hover {
   background-color: #f6f9fc;
   cursor: pointer;
+}
+
+.icon-large {
+  font-size: 24px;
 }
 </style>

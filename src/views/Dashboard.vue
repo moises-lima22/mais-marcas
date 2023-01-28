@@ -1,9 +1,35 @@
 <template>
   <div>
     <base-header class="pb-6 pb-8 pt-5 pt-md-8 bg-gradient-success">
-      <!-- Card stats -->
-      <b-row>
-        <b-col xl="3" md="6">
+      <card>
+        <b-card-header class="p-0">
+          <h3>Parâmetros da consulta</h3>
+        </b-card-header>
+        <b-card-body class="pl-0 pr-0">
+          <b-row>
+            <b-col lg="6">
+              <base-input
+                type="text"
+                label="Pedido"
+                placeholder="Informe o número do pedido"
+                appendIcon="fas fa-search"
+                clearableIcon="ni ni-fat-remove"
+                v-model="input"
+                @input="(v) => teste(v)"
+              >
+              </base-input>
+              <!-- <autocomplete></autocomplete> -->
+              <!-- <base-input
+                type="email"
+                label="Email address"
+                placeholder="mike@email.com"
+              >
+              </base-input> -->
+            </b-col>
+          </b-row>
+        </b-card-body>
+        <b-row>
+          <!-- <b-col xl="3" md="6">
           <stats-card
             title="Total pedidos abertos"
             type="gradient-red"
@@ -12,12 +38,11 @@
             class="mb-4"
           >
             <template slot="footer">
-              <!-- <span class="text-success mr-2">3.48%</span> -->
               <span class="text-nowrap">Janeiro/2023</span>
             </template>
           </stats-card>
-        </b-col>
-        <b-col xl="3" md="6">
+        </b-col> -->
+          <!-- <b-col xl="3" md="6">
           <stats-card
             title="Dentro do prazo"
             type="gradient-orange"
@@ -27,7 +52,6 @@
           >
             <template slot="footer">
               <span class="text-success mr-2">90.00%</span>
-              <!-- <span class="text-nowrap">Since last month</span> -->
             </template>
           </stats-card>
         </b-col>
@@ -41,11 +65,11 @@
           >
             <template slot="footer">
               <span class="text-danger mr-2">10.00%</span>
-              <!-- <span class="text-nowrap">Since last month</span> -->
             </template>
           </stats-card>
-        </b-col>
-      </b-row>
+        </b-col> -->
+        </b-row>
+      </card>
     </base-header>
 
     <!--Main-->
@@ -94,6 +118,7 @@ export default {
   },
   data() {
     return {
+      input: "",
       bigLineChart: {
         allData: [
           [0, 20, 10, 30, 15, 40, 20, 60, 60],
@@ -139,13 +164,16 @@ export default {
       this.bigLineChart.chartData = chartData;
       this.bigLineChart.activeIndex = index;
     },
+    teste(v) {
+      console.log(v);
+    },
   },
   mounted() {
     this.initBigChart(0);
   },
 };
 </script>
-<style>
+<style scoped>
 .el-table .cell {
   padding-left: 0px;
   padding-right: 0px;
