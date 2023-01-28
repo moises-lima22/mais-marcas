@@ -54,6 +54,13 @@ export default {
     [Table.name]: Table,
     [TableColumn.name]: TableColumn,
   },
+  props: {
+    title: {
+      type: String,
+      required: false,
+      default: "Título",
+    },
+  },
   methods: {
     notifyTopRight() {
       this.$notify({
