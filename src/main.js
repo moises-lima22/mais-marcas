@@ -1,17 +1,20 @@
 import Vue from "vue";
-import DashboardPlugin from "@/modules/core/plugins/dashboard-plugin";
-import App from "./modules/core/App.vue";
+import VueRouter from "vue-router";
+import coreModule from "./modules/core/core-modules.js";
 
-import store from "@/modules/core/store";
+Vue.use(VueRouter);
 
-// router setup
-import router from "./modules/core/routes/router";
-// plugin setup
-Vue.use(DashboardPlugin);
+const router = new VueRouter({
+  routes: coreModule.routes,
+});
 
 /* eslint-disable no-new */
 new Vue({
   el: "#app",
-  render: (h) => h(App),
   router,
+  dashboardPlugin: coreModule.plugins[0],
+  components: {
+    App: coreModule.components.App,
+  },
+  template: "<App />",
 });
