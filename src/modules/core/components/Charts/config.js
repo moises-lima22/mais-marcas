@@ -1,4 +1,4 @@
-import { parseOptions } from "@/components/Charts/optionHelpers";
+import { parseOptions } from "@/modules/core/components/Charts/optionHelpers";
 import Chart from 'chart.js'
 
 export const Charts = {

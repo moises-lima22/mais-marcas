@@ -86,7 +86,7 @@
 </template>
 <script>
   import { CollapseTransition } from 'vue2-transitions';
-  import { BaseNav, Modal } from '@/components';
+  import { BaseNav, Modal } from '@/modules/core/components';
 
   export default {
     components: {

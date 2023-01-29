@@ -1,7 +1,7 @@
-import DashboardLayout from '@/views/Layout/DashboardLayout.vue';
-import AuthLayout from '@/views/Pages/AuthLayout.vue';
+import DashboardLayout from '@/modules/core/views/Layout/DashboardLayout.vue';
+import AuthLayout from '@/modules/core/views/Pages/AuthLayout.vue';
 
-import NotFound from '@/views/NotFoundPage.vue';
+import NotFound from '@/modules/core/views/NotFoundPage.vue';
 
 const routes = [
   {

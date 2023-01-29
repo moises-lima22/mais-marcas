@@ -93,14 +93,14 @@
 </template>
 <script>
 // Charts
-import * as chartConfigs from "@/components/Charts/config";
-import LineChart from "@/components/Charts/LineChart";
-import BarChart from "@/components/Charts/BarChart";
+import * as chartConfigs from "@/modules/core/components/Charts/config";
+import LineChart from "@/modules/core/components/Charts/LineChart";
+import BarChart from "@/modules/core/components/Charts/BarChart";
 
 // Components
-import BaseProgress from "@/components/BaseProgress";
-import StatsCard from "@/components/Cards/StatsCard";
-import Kanban from "@/components/Kanban";
+import BaseProgress from "@/modules/core/components/BaseProgress";
+import StatsCard from "@/modules/core/components/Cards/StatsCard";
+import Kanban from "@/modules/core/components/Kanban";
 
 // Tables
 import SocialTrafficTable from "./Dashboard/SocialTrafficTable";

@@ -95,7 +95,7 @@
   </div>
 </template>
 <script>
-import { BaseNav } from "@/components";
+import { BaseNav } from "@/modules/core/components";
 import { ZoomCenterTransition } from "vue2-transitions";
 
 export default {

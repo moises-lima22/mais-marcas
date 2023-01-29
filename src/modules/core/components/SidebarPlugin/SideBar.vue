@@ -135,7 +135,7 @@
   </nav>
 </template>
 <script>
-import NavbarToggleButton from "@/components/NavbarToggleButton";
+import NavbarToggleButton from "../Navbar/NavbarToggleButton.vue";
 
 export default {
   name: "sidebar",

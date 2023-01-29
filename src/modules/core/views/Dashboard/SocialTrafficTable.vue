@@ -37,7 +37,7 @@
   </b-card>
 </template>
 <script>
-  import { BaseProgress } from '@/components';
+  import { BaseProgress } from '@/modules/core/components';
   import { Table, TableColumn, DropdownMenu, DropdownItem, Dropdown} from 'element-ui'
   export default {
     name: 'social-traffic-table',
