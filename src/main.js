@@ -1,11 +1,11 @@
 import Vue from "vue";
-import DashboardPlugin from "./plugins/dashboard-plugin";
-import App from "./App.vue";
+import DashboardPlugin from "@/modules/core/plugins/dashboard-plugin";
+import App from "./modules/core/App.vue";
 
-import store from "@/core/store";
+import store from "@/modules/core/store";
 
 // router setup
-import router from "./routes/router";
+import router from "./modules/core/routes/router";
 // plugin setup
 Vue.use(DashboardPlugin);
 
