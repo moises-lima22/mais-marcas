@@ -1,31 +1,23 @@
-/*!
+// import Vue from "vue";
+import Vue from "vue/dist/vue.js";
+import VueRouter from "vue-router";
+import coreModule from "./modules/core/core-modules.js";
+import DashboardPlugin from "@/modules/core/plugins/dashboard-plugin";
 
-=========================================================
-* BootstrapVue Argon Dashboard - v1.0.0
-=========================================================
 
-* Product Page: https://www.creative-tim.com/product/bootstrap-vue-argon-dashboard
-* Copyright 2020 Creative Tim (https://www.creative-tim.com)
-
-* Coded by www.creative-tim.com
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
-import Vue from 'vue';
-import DashboardPlugin from './plugins/dashboard-plugin';
-import App from './App.vue';
-
-// router setup
-import router from './routes/router';
-// plugin setup
+Vue.use(VueRouter);
 Vue.use(DashboardPlugin);
+
+const router = new VueRouter({
+  routes: coreModule.routes,
+});
 
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
-  render: h => h(App),
-  router
+  el: "#app",
+  router,
+  components: {
+    App: coreModule.components.App,
+  },
+  template: "<App />",
 });
