@@ -4,7 +4,7 @@ import NotFound from "@/modules/core/views/NotFoundPage.vue";
 
 const routes = [
   {
-    path: "/Dashboard",
+    path: "/",
     component: DashboardLayout,
     children: [
       {

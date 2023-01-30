@@ -13,6 +13,7 @@ module.exports = {
       alias: {
         assets: resolveSrc("src/modules/core/assets"),
       },
+      
     },
   },
   css: {
