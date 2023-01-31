@@ -6,8 +6,8 @@
   </div>
 </template>
 <script>
-export default CadastroPessoa({
-  name: "cadastro-pessoa",
+export default {
+  name: "CadastroPessoa",
   setup() {},
-});
+};
 </script>

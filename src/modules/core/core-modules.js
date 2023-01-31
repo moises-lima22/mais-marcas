@@ -1,6 +1,4 @@
 import App from "./App.vue";
-import coreRoutes from "./routes/routes";
-
 export default class CoreModule {
   router;
   // store;
@@ -11,7 +9,6 @@ export default class CoreModule {
   }
 
   install(Vue) {
-    this.router.addRoutes(coreRoutes);
     /* eslint-disable no-new */
     new Vue({
       router: this.router,

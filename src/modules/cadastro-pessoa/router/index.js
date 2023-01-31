@@ -4,7 +4,7 @@ const cadastroPessoaRoute = [
     name: "cadastroPessoa",
     component: () =>
       import(
-        /* webpackChunkName: "cadastroPessoa" */ "@/modules/cadastro-pessoa/views/cadastroPessoa"
+        /* webpackChunkName: "cadastroPessoa" */ "@/modules/cadastro-pessoa/views/CadastroPessoa.vue"
       ),
   },
 ];
