@@ -7,7 +7,7 @@
   >
     <b-form-group>
       <slot name="label">
-        <label v-if="label" :class="labelClasses">
+        <label v-if="label" class="m-0" :class="labelClasses">
           {{ label }}
         </label>
       </slot>

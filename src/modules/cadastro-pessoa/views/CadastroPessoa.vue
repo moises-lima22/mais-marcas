@@ -1,9 +1,7 @@
 <template>
   <div>
     <base-header class="pb-6 pb-8 pt-5 pt-md-8 bg-gradient-success">
-      <card>
-        <h2>Teste</h2>
-      </card>
+      <card-consulta-cadastro-pessoa />
     </base-header>
 
     <!--Main-->
@@ -11,8 +9,12 @@
   </div>
 </template>
 <script>
+import CardConsultaCadastroPessoa from "../components/CardConsultaCadastroPessoa.vue";
+
 export default {
   name: "CadastroPessoa",
-  setup() {},
+  components: {
+    CardConsultaCadastroPessoa,
+  },
 };
 </script>
