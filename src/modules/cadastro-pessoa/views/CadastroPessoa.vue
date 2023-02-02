@@ -5,16 +5,20 @@
     </base-header>
 
     <!--Main-->
-    <b-container fluid class="mt--7" style="min-height: 700px"> </b-container>
+    <b-container fluid class="mt--7" style="min-height: 700px">
+      <card-listagem-pessoa />
+    </b-container>
   </div>
 </template>
 <script>
 import CardConsultaCadastroPessoa from "../components/CardConsultaCadastroPessoa.vue";
+import CardListagemPessoa from "../components/CardListagemPessoa.vue";
 
 export default {
   name: "CadastroPessoa",
   components: {
     CardConsultaCadastroPessoa,
+    CardListagemPessoa,
   },
 };
 </script>
