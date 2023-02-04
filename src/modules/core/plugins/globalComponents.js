@@ -15,7 +15,6 @@ import BaseHeader from "@/modules/core/components/BaseHeader";
 import AutoComplete from "@/modules/core/components/AutoComplete";
 import ChipButton from "@/modules/core/components/ChipButton";
 import { ValidationProvider, ValidationObserver } from "vee-validate";
-import { Input, Tooltip, Popover } from "element-ui";
 /**
  * You can register global components here and use them as a plugin in your main Vue instance
  */
@@ -38,11 +37,8 @@ const GlobalComponents = {
     Vue.component(Modal.name, Modal);
     Vue.component(StatsCard.name, StatsCard);
     Vue.component(ChipButton.name, ChipButton);
-    Vue.component(Input.name, Input);
     Vue.component("validation-provider", ValidationProvider);
     Vue.component("validation-observer", ValidationObserver);
-    Vue.use(Tooltip);
-    Vue.use(Popover);
   },
 };
 

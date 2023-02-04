@@ -26,16 +26,7 @@
 </template>
 
 <script>
-import { Card, Table, TableColumn, Button } from "element-ui";
-
 export default {
-  components: {
-    [Card.name]: Card,
-    [Table.name]: Table,
-    [TableColumn.name]: TableColumn,
-    [Button.name]: Button,
-  },
-
   data() {
     return {
       people: [

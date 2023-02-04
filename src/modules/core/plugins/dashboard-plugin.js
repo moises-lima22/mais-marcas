@@ -12,6 +12,8 @@ import GlobalDirectives from "./globalDirectives";
 import SideBar from "@/modules/core/components/SidebarPlugin";
 
 // element ui language configuration
+import ElementUI from "element-ui";
+import "element-ui/lib/theme-chalk/index.css";
 import lang from "element-ui/lib/locale/lang/en";
 import locale from "element-ui/lib/locale";
 locale.use(lang);
@@ -43,6 +45,7 @@ export default {
     Vue.use(VueMask);
     Vue.use(Notifications);
     Vue.use(BootstrapVue);
+    Vue.use(ElementUI);
     Vue.use(IconsPlugin);
     configure({
       classes: {

@@ -26,17 +26,8 @@
 </template>
 
 <script>
-import { Card, Table, TableColumn, Button } from "element-ui";
-
 export default {
   name: "card-listagem-pedido",
-  components: {
-    [Card.name]: Card,
-    [Table.name]: Table,
-    [TableColumn.name]: TableColumn,
-    [Button.name]: Button,
-  },
-
   data() {
     return {
       people: [

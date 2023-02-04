@@ -9,8 +9,18 @@
         <base-button size="sm">Salvar</base-button>
       </b-col>
     </b-row>
+    <b-row>
+      <b-col>
+        <el-steps :active="active" finish-status="success">
+          <el-step title="Step 1"></el-step>
+          <el-step title="Step 2"></el-step>
+          <el-step title="Step 3"></el-step>
+        </el-steps>
 
-    <b-form @submit.prevent="updateProfile">
+        <el-button style="margin-top: 12px" @click="next">Next step</el-button>
+      </b-col>
+    </b-row>
+    <!-- <b-form @submit.prevent="updateProfile">
       <h6 class="heading-small text-muted mb-4">Informações do usuário</h6>
 
       <div class="pl-lg-4">
@@ -78,7 +88,6 @@
 
       <hr class="my-4" />
 
-      <!-- Dados bancários -->
       <h6 class="heading-small text-muted mb-4">Dados bancários</h6>
 
       <div class="pl-lg-4">
@@ -165,7 +174,6 @@
       </div>
 
       <hr class="my-4" />
-      <!-- Description -->
       <h6 class="heading-small text-muted mb-4">Bloco de nota</h6>
       <div class="pl-lg-4">
         <b-form-group
@@ -187,7 +195,7 @@
           <base-button size="sm">Salvar</base-button>
         </b-col>
       </b-row>
-    </b-form>
+    </b-form> -->
   </card>
 </template>
 <script>
@@ -215,6 +223,7 @@ export default {
         { text: "Colaborador", value: "colaborador" },
         { text: "Oficina", value: "oficina" },
       ],
+      active: 0,
     };
   },
   methods: {
@@ -223,6 +232,9 @@ export default {
     },
     goBack() {
       this.$router.push({ name: "consulta-pedido" });
+    },
+    next() {
+      if (this.active++ > 2) this.active = 0;
     },
   },
 };
