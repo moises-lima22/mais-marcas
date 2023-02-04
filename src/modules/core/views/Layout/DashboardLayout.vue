@@ -23,6 +23,15 @@
 
         <sidebar-item
           :link="{
+            name: 'Pedido',
+            path: '/consulta-pedido',
+            icon: 'ni ni-bag-17 text-primary',
+          }"
+        >
+        </sidebar-item>
+
+        <sidebar-item
+          :link="{
             name: 'Icons',
             path: '/icons',
             icon: 'ni ni-planet text-blue',

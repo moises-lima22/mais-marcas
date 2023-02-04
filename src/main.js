@@ -5,6 +5,7 @@ import DashboardPlugin from "@/modules/core/plugins/dashboard-plugin";
 
 import CoreModule from "./modules/core/core-modules.js";
 import CadastroPessoa from "./modules/cadastro-pessoa/cadastro-pessoa-module";
+import Pedido from "./modules/pedido/pedido-module";
 import routes from "./modules/core/routes/routes";
 
 Vue.use(VueRouter);
@@ -13,6 +14,9 @@ Vue.use(DashboardPlugin);
 (function modules() {
   const cadastroPessoa = new CadastroPessoa();
   cadastroPessoa.install(routes);
+
+  const pedido = new Pedido();
+  pedido.install(routes);
 })();
 
 // configure router
