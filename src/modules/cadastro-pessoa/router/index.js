@@ -1,10 +1,10 @@
 const cadastroPessoaRoute = [
   {
-    path: "cadastro-pessoa",
-    name: "cadastroPessoa",
+    path: "consulta-cadastro-pessoa",
+    name: "Cadastro Pessoa",
     component: () =>
       import(
-        /* webpackChunkName: "cadastroPessoa" */ "@/modules/cadastro-pessoa/views/CadastroPessoa.vue"
+        /* webpackChunkName: "consultaCadastroPessoa" */ "@/modules/cadastro-pessoa/views/ConsultaCadastroPessoa.vue"
       ),
   },
 ];

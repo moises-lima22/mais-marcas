@@ -15,7 +15,7 @@ import CardConsultaCadastroPessoa from "../components/CardConsultaCadastroPessoa
 import CardListagemPessoa from "../components/CardListagemPessoa.vue";
 
 export default {
-  name: "CadastroPessoa",
+  name: "consulta-cadastro-pessoa",
   components: {
     CardConsultaCadastroPessoa,
     CardListagemPessoa,

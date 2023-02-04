@@ -14,9 +14,9 @@
 
         <sidebar-item
           :link="{
-            name: 'CadastroPessoa',
-            path: '/cadastro-pessoa',
-            icon: 'ni ni-tv-2 text-primary',
+            name: 'Cadastro',
+            path: '/consulta-cadastro-pessoa',
+            icon: 'ni ni-circle-08 text-primary',
           }"
         >
         </sidebar-item>
