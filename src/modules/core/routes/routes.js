@@ -1,6 +1,5 @@
 import DashboardLayout from "@/modules/core/views/Layout/DashboardLayout.vue";
 import AuthLayout from "@/modules/core/views/Pages/AuthLayout.vue";
-
 import NotFound from "@/modules/core/views/NotFoundPage.vue";
 
 const routes = [
@@ -10,62 +9,60 @@ const routes = [
     component: DashboardLayout,
     children: [
       {
-        path: "/dashboard",
+        path: "dashboard",
         name: "dashboard",
-        // route level code-splitting
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
         component: () =>
-          import(/* webpackChunkName: "demo" */ "../views/Dashboard.vue"),
+          import(/* webpackChunkName: "dashboard" */ "../views/Dashboard.vue"),
       },
       {
-        path: "/icons",
+        path: "icons",
         name: "icons",
         component: () =>
-          import(/* webpackChunkName: "demo" */ "../views/Icons.vue"),
+          import(/* webpackChunkName: "icons" */ "../views/Icons.vue"),
       },
       {
-        path: "/profile",
+        path: "profile",
         name: "profile",
         component: () =>
           import(
-            /* webpackChunkName: "demo" */ "../views/Pages/UserProfile.vue"
+            /* webpackChunkName: "profile" */ "../views/Pages/UserProfile.vue"
           ),
       },
       {
-        path: "/maps",
+        path: "maps",
         name: "maps",
         component: () =>
-          import(/* webpackChunkName: "demo" */ "../views/GoogleMaps.vue"),
+          import(/* webpackChunkName: "maps" */ "../views/GoogleMaps.vue"),
       },
       {
-        path: "/tables",
+        path: "tables",
         name: "tables",
         component: () =>
-          import(/* webpackChunkName: "demo" */ "../views/RegularTables.vue"),
+          import(/* webpackChunkName: "tables" */ "../views/RegularTables.vue"),
       },
     ],
   },
   {
-    path: "/",
-    redirect: "login",
+    path: "/Auth",
     component: AuthLayout,
     children: [
       {
-        path: "/login",
+        path: "login",
         name: "login",
         component: () =>
-          import(/* webpackChunkName: "demo" */ "../views/Pages/Login.vue"),
+          import(/* webpackChunkName: "login" */ "../views/Pages/Login.vue"),
       },
       {
-        path: "/register",
+        path: "register",
         name: "register",
         component: () =>
-          import(/* webpackChunkName: "demo" */ "../views/Pages/Register.vue"),
+          import(
+            /* webpackChunkName: "register" */ "../views/Pages/Register.vue"
+          ),
       },
-      { path: "*", component: NotFound },
     ],
   },
+  { path: "", component: NotFound },
 ];
 
 export default routes;

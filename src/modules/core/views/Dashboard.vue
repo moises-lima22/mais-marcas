@@ -13,7 +13,7 @@
                 label="Pedido"
                 placeholder="Informe o número do pedido"
                 appendIcon="fas fa-search"
-                clearableIcon="ni ni-fat-remove"
+                clearableIcon
                 v-model="input"
                 @input="(v) => teste(v)"
               >

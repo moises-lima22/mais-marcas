@@ -7,16 +7,9 @@
     <a
       href="#"
       aria-current="page"
-      class="
-        h4
-        mb-0
-        text-white text-uppercase
-        d-none d-lg-inline-block
-        active
-        router-link-active
-      "
+      class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block active router-link-active"
     >
-      {{ $route.name }}
+      {{ routerName }}
     </a>
     <!-- Navbar links -->
     <b-navbar-nav class="align-items-center ml-md-auto">
@@ -142,6 +135,14 @@ export default {
     },
     closeDropDown() {
       this.activeNotifications = false;
+    },
+  },
+  computed: {
+    routerName: function () {
+      return this.$route.name
+        .split("-")
+        .map((word) => word[0].toUpperCase() + word.slice(1))
+        .join(" ");
     },
   },
 };

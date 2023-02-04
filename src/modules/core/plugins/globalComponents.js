@@ -13,6 +13,7 @@ import BaseAlert from "@/modules/core/components/BaseAlert";
 import BaseNav from "@/modules/core/components/Navbar/BaseNav";
 import BaseHeader from "@/modules/core/components/BaseHeader";
 import AutoComplete from "@/modules/core/components/AutoComplete";
+import ChipButton from "@/modules/core/components/ChipButton";
 import { ValidationProvider, ValidationObserver } from "vee-validate";
 import { Input, Tooltip, Popover } from "element-ui";
 /**
@@ -36,6 +37,7 @@ const GlobalComponents = {
     Vue.component(Card.name, Card);
     Vue.component(Modal.name, Modal);
     Vue.component(StatsCard.name, StatsCard);
+    Vue.component(ChipButton.name, ChipButton);
     Vue.component(Input.name, Input);
     Vue.component("validation-provider", ValidationProvider);
     Vue.component("validation-observer", ValidationObserver);

@@ -12,13 +12,13 @@ export default new Router({
       name: "home",
       redirect: "/dashboard",
       component: DashboardLayout,
-      children: [
-        {
-          path: "dashboard",
-          name: "dashboard",
-          components: { default: Starter },
-        },
-      ],
+      // children: [
+      //   {
+      //     path: "dashboard",
+      //     name: "dashboard",
+      //     components: { default: Starter },
+      //   },
+      // ],
     },
   ],
   scrollBehavior: (to, from, savedPosition) => {

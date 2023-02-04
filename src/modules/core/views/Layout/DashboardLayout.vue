@@ -14,6 +14,15 @@
 
         <sidebar-item
           :link="{
+            name: 'Cadastro',
+            path: '/consulta-cadastro-pessoa',
+            icon: 'ni ni-circle-08 text-primary',
+          }"
+        >
+        </sidebar-item>
+
+        <sidebar-item
+          :link="{
             name: 'Icons',
             path: '/icons',
             icon: 'ni ni-planet text-blue',

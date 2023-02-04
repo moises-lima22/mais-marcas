@@ -1,23 +1,37 @@
-// import Vue from "vue";
-import Vue from "vue/dist/vue.js";
+import Vue from "vue";
 import VueRouter from "vue-router";
-import coreModule from "./modules/core/core-modules.js";
+
 import DashboardPlugin from "@/modules/core/plugins/dashboard-plugin";
 
+import CoreModule from "./modules/core/core-modules.js";
+import CadastroPessoa from "./modules/cadastro-pessoa/cadastro-pessoa-module";
+import routes from "./modules/core/routes/routes";
 
 Vue.use(VueRouter);
 Vue.use(DashboardPlugin);
 
+(function modules() {
+  const cadastroPessoa = new CadastroPessoa();
+  cadastroPessoa.install(routes);
+})();
+
+// configure router
 const router = new VueRouter({
-  routes: coreModule.routes,
+  mode: "history",
+  routes, // short for routes: routes
+  linkActiveClass: "active",
+  scrollBehavior: (to, from, savedPosition) => {
+    if (savedPosition) {
+      return savedPosition;
+    }
+    if (to.hash) {
+      return { selector: to.hash };
+    }
+    return { x: 0, y: 0 };
+  },
 });
 
-/* eslint-disable no-new */
-new Vue({
-  el: "#app",
-  router,
-  components: {
-    App: coreModule.components.App,
-  },
-  template: "<App />",
-});
+(function coreModule() {
+  const coreModule = new CoreModule(router);
+  coreModule.install(Vue);
+})();
