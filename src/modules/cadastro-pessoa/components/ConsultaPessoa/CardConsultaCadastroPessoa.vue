@@ -5,7 +5,11 @@
         <h3>Parâmetros da consulta</h3>
       </b-col>
       <div class="ml-auto">
-        <b-button class="shadow-none bg-transparent" size="sm">
+        <b-button
+          class="shadow-none bg-transparent"
+          size="sm"
+          @click="novoCadastro()"
+        >
           <div class="d-flex align-content-center">
             <span>Novo Cadastro</span>
             <i class="ni ni-fat-add" style="font-size: 20px"></i>
@@ -20,7 +24,7 @@
             type="text"
             label="Nome"
             placeholder="Pesquise por nome"
-            clearableIcon="ni ni-fat-remove"
+            clearableIcon
             v-model="input"
             @input="(v) => teste(v)"
           >
@@ -31,7 +35,7 @@
             type="text"
             label="CPF/CNPJ"
             placeholder="Pesquise por CPF ou CNPJ"
-            clearableIcon="ni ni-fat-remove"
+            clearableIcon
             v-model="input"
             @input="(v) => teste(v)"
           >
@@ -40,7 +44,7 @@
       </b-row>
       <b-row class="m-0">
         <div class="ml-auto">
-          <base-button size="sm" outline>Limpar</base-button>
+          <a href="#!" class="btn btn-sm">Limpar</a>
           <base-button size="sm">Consultar</base-button>
         </div>
       </b-row>
@@ -58,6 +62,10 @@ export default {
   methods: {
     teste(v) {
       console.log(v);
+    },
+    novoCadastro() {
+      this.$router.push({ name: "novo-cadastro-pessoa" });
+      return;
     },
   },
   mounted() {},

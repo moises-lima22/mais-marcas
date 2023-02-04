@@ -43,10 +43,10 @@
             ]"
           />
         </slot>
-        <div v-if="value" class="input-group-append">
+        <div v-if="value && clearableIcon" class="input-group-append">
           <span class="input-group-text p-0">
             <slot name="clearable">
-              <i class="append-icon icon-large" :class="clearableIcon"></i>
+              <i class="append-icon icon-large ni ni-fat-remove"></i>
             </slot>
           </span>
         </div>
@@ -126,7 +126,7 @@ export default {
       default: "text",
     },
     clearableIcon: {
-      type: String,
+      type: Boolean,
       description: "clearableIcon icon (right)",
     },
     appendIcon: {

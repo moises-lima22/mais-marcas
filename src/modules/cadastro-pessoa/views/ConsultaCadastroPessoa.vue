@@ -11,8 +11,8 @@
   </div>
 </template>
 <script>
-import CardConsultaCadastroPessoa from "../components/CardConsultaCadastroPessoa.vue";
-import CardListagemPessoa from "../components/CardListagemPessoa.vue";
+import CardConsultaCadastroPessoa from "../components/ConsultaPessoa/CardConsultaCadastroPessoa.vue";
+import CardListagemPessoa from "../components/ConsultaPessoa/CardListagemPessoa.vue";
 
 export default {
   name: "consulta-cadastro-pessoa",
