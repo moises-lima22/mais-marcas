@@ -11,7 +11,7 @@
           @click="novoCadastro()"
         >
           <div class="d-flex align-content-center">
-            <span>Novo Cadastro</span>
+            <span>Novo cadastro</span>
             <i class="ni ni-fat-add" style="font-size: 20px"></i>
           </div>
         </b-button>

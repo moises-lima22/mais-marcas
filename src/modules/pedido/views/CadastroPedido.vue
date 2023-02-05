@@ -11,22 +11,22 @@
       </b-container>
     </div>
 
-    <b-container fluid class="mt--6">
+    <b-container fluid class="mt--8">
       <b-row class="d-flex justify-content-center">
         <b-col xl="11" class="order-xl-1">
-          <formulario-criar-editar-pedido />
+          <steps-novo-pedido />
         </b-col>
       </b-row>
     </b-container>
   </div>
 </template>
 <script>
-import FormularioCriarEditarPedido from "../components/CadastroPedido/FormularioCriarEditarPedido.vue";
+import StepsNovoPedido from "../components/CadastroPedido/StepsNovoPedido.vue";
 
 export default {
   name: "cadastro-pessoal",
   components: {
-    FormularioCriarEditarPedido,
+    StepsNovoPedido,
   },
 };
 </script>
