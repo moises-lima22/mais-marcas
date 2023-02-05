@@ -6,8 +6,7 @@
       </b-col>
       <div class="ml-auto">
         <b-button
-          class="shadow-none bg-transparent"
-          size="sm"
+          class="btn-primary shadow-none bg-transparent"
           @click="novoCadastro()"
         >
           <div class="d-flex align-content-center">
@@ -44,8 +43,8 @@
       </b-row>
       <b-row class="m-0">
         <div class="ml-auto">
-          <a href="#!" class="btn btn-sm">Limpar</a>
-          <base-button size="sm">Consultar</base-button>
+          <a href="#!" class="btn">Limpar</a>
+          <b-button variant="primary">Consultar</b-button>
         </div>
       </b-row>
     </b-card-body>

@@ -4,10 +4,6 @@
       <b-col cols="8">
         <h3 class="mb-0">Dados</h3>
       </b-col>
-      <b-col cols="4" class="text-right">
-        <a href="#!" @click="goBack()" class="btn btn-sm">Voltar</a>
-        <base-button size="sm">Salvar</base-button>
-      </b-col>
     </b-row>
 
     <b-form @submit.prevent="updateProfile">
@@ -183,8 +179,8 @@
       </div>
       <b-row class="mt-4" slot="footer">
         <b-col cols="12" class="text-right">
-          <a href="#!" class="btn btn-sm" @click="goBack()">Voltar</a>
-          <base-button size="sm">Salvar</base-button>
+          <a href="#!" class="btn" @click="goBack()">Voltar</a>
+          <base-button>Salvar</base-button>
         </b-col>
       </b-row>
     </b-form>

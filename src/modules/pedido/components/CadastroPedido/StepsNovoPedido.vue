@@ -18,8 +18,8 @@
     <step-itens-pedido v-if="step === 1" />
     <b-row slot="footer">
       <b-col cols="12" class="text-right">
-        <a href="#!" class="btn btn-sm" @click="goBack()">Voltar</a>
-        <base-button size="sm" @click="next()">Avancar</base-button>
+        <a href="#!" class="btn" @click="goBack()">Voltar</a>
+        <b-button @click="next()" variant="primary">Avancar</b-button>
       </b-col>
     </b-row>
   </card>

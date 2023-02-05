@@ -5,11 +5,7 @@
         <h3>Parâmetros da consulta</h3>
       </b-col>
       <div class="ml-auto">
-        <b-button
-          class="shadow-none bg-transparent"
-          size="sm"
-          @click="novoCadastro()"
-        >
+        <b-button class="shadow-none bg-transparent" @click="novoCadastro()">
           <div class="d-flex align-content-center">
             <span>Novo pedido</span>
             <i class="ni ni-fat-add" style="font-size: 20px"></i>
@@ -44,8 +40,8 @@
       </b-row>
       <b-row class="m-0">
         <div class="ml-auto">
-          <a href="#!" class="btn btn-sm">Limpar</a>
-          <base-button size="sm">Consultar</base-button>
+          <a href="#!" class="btn">Limpar</a>
+          <b-button variant="primary">Consultar</b-button>
         </div>
       </b-row>
     </b-card-body>
