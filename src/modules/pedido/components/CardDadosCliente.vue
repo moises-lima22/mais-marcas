@@ -18,10 +18,10 @@
           </div>
         </b-col>
         <div class="d-flex align-items-end pl-3">
-          <base-button outline>
+          <b-button variant="outline-primary">
             <i class="fas fa-search"></i>
             <span>Selecionar cliente</span>
-          </base-button>
+          </b-button>
         </div>
       </b-row>
       <b-row>
