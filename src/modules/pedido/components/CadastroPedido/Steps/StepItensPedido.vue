@@ -4,19 +4,19 @@
       <card-detalhes-pedido />
     </card>
     <card>
-      <card-adicionar-material />
+      <card-catalogo />
     </card>
   </div>
 </template>
 <script>
 import CardDetalhesPedido from "../../CardDetalhesPedido.vue";
-import CardAdicionarMaterial from "../CardAdicionarMaterial.vue";
+import CardCatalogo from "../CardCatalogo.vue";
 
 export default {
   name: "step-itens-pedido",
   components: {
     CardDetalhesPedido,
-    CardAdicionarMaterial,
+    CardCatalogo,
   },
   data() {
     return {};
