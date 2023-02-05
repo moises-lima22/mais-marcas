@@ -1,36 +1,23 @@
 <template>
   <card>
-    <b-row class="d-flex justify-content-center">
-      <b-col cols="12">
-        <el-steps
-          :active="step"
-          class="mb-3"
-          align-center
-          finish-status="success"
-        >
-          <el-step title="Dados do pedido"> </el-step>
-          <el-step title="Itens"></el-step>
-          <el-step title="Resumo"></el-step>
-        </el-steps>
-      </b-col>
-    </b-row>
-    <step-dados-pedido v-if="step === 0" />
-    <step-itens-pedido v-if="step === 1" />
-    <b-row slot="footer">
-      <b-col cols="12" class="text-right">
-        <a href="#!" class="btn btn-sm" @click="goBack()">Voltar</a>
-        <base-button size="sm" @click="next()">Avancar</base-button>
-      </b-col>
-    </b-row>
+    <!-- <card-dados-cliente /> -->
+    <!-- <hr class="my-4" /> -->
+    <!-- <card-dados-vendedor /> -->
+    <card-detalhes-pedido />
   </card>
 </template>
 <script>
-import StepDadosPedido from "./Steps/StepDadosPedido.vue";
-import StepItensPedido from "./Steps/StepItensPedido.vue";
+import CardDadosCliente from "../../CardDadosCliente.vue";
+import CardDadosVendedor from "../../CardDadosVendedor.vue";
+import CardDetalhesPedido from "../../CardDetalhesPedido.vue";
 
 export default {
-  name: "steps-novo-pedido",
-  components: { StepDadosPedido, StepItensPedido },
+  name: "step-itens-pedido",
+  components: {
+    CardDadosCliente,
+    CardDadosVendedor,
+    CardDetalhesPedido,
+  },
   data() {
     return {
       user: {
@@ -53,7 +40,7 @@ export default {
         { text: "Colaborador", value: "colaborador" },
         { text: "Oficina", value: "oficina" },
       ],
-      step: 1,
+      active: 0,
     };
   },
   methods: {
@@ -64,7 +51,7 @@ export default {
       this.$router.push({ name: "consulta-pedido" });
     },
     next() {
-      if (this.step++ > 2) this.step = 0;
+      if (this.active++ > 2) this.active = 0;
     },
   },
 };
