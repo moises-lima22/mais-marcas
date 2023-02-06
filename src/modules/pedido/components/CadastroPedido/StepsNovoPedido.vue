@@ -16,10 +16,16 @@
     </b-row>
     <step-dados-pedido v-if="step === 0" />
     <step-itens-pedido v-if="step === 1" />
+    <step-resumo-pedido v-if="step === 2" />
     <b-row slot="footer">
       <b-col cols="12" class="text-right">
         <a href="#!" class="btn" @click="goBack()">Voltar</a>
-        <b-button @click="next()" variant="primary">Avancar</b-button>
+        <b-button @click="next()" variant="primary" v-if="step !== 2">
+          Avancar
+        </b-button>
+        <b-button v-else @click="next()" variant="primary">
+          Encaminhar pedido
+        </b-button>
       </b-col>
     </b-row>
   </card>
@@ -27,10 +33,11 @@
 <script>
 import StepDadosPedido from "./Steps/StepDadosPedido.vue";
 import StepItensPedido from "./Steps/StepItensPedido.vue";
+import StepResumoPedido from "./Steps/StepResumoPedido.vue";
 
 export default {
   name: "steps-novo-pedido",
-  components: { StepDadosPedido, StepItensPedido },
+  components: { StepDadosPedido, StepItensPedido, StepResumoPedido },
   data() {
     return {
       user: {
@@ -53,7 +60,7 @@ export default {
         { text: "Colaborador", value: "colaborador" },
         { text: "Oficina", value: "oficina" },
       ],
-      step: 1,
+      step: 2,
     };
   },
   methods: {

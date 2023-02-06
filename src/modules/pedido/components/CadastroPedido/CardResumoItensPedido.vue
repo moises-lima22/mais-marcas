@@ -1,12 +1,7 @@
 <template>
   <div>
-    <h6 class="heading-small text-muted mb-4">Adicionar produto</h6>
-    <b-row class="m-0 d-flex justify-content-center">
-      <b-button pill variant="primary">Todos</b-button>
-      <b-button pill variant="outline-primary" disabled>
-        Itens adicionados
-      </b-button>
-    </b-row>
+    <h6 class="heading-small text-muted mb-4">Resumo de itens do pedido</h6>
+    <b-row class="m-0 d-flex justify-content-center"> </b-row>
     <b-row class="m-0 mb-4">
       <b-col class="p-0">
         <div class="d-flex flex-column">
@@ -24,35 +19,48 @@
     </b-row>
 
     <FiltroDropdown :dropdowns="dropdowns" />
-    <el-main
-      class="p-0 d-flex justify-content-start"
-      style="min-height: 100px; flex-wrap: wrap"
+    <el-table
+      :data="tableData"
+      :show-header="false"
+      :pagination="pagination"
+      @size-change="handleSizeChange"
+      @current-change="handleCurrentChange"
     >
-      <el-col style="width: auto" v-for="item in displayedItems" :key="item.id">
-        <CardProduto :product="item" />
-      </el-col>
-    </el-main>
-    <el-footer v-if="displayedItems.length < items.length">
-      <el-button @click="showMore">Mostrar Mais</el-button>
-    </el-footer>
+      <el-table-column>
+        <template slot-scope="scope">
+          <b-card>
+            <span>{{ scope.row.name }}</span>
+          </b-card>
+        </template>
+      </el-table-column>
+    </el-table>
   </div>
 </template>
 
 <script>
 import CardProduto from "./CardProduto.vue";
-import items from "./items";
 import FiltroDropdown from "./FiltroDropdown.vue";
 
 export default {
-  name: "Catalogo",
+  name: "card-resumo-itens-pedido",
   components: {
-    CardProduto,
     FiltroDropdown,
+    CardProduto,
   },
   data() {
     return {
-      items: [],
-      displayedItems: [],
+      tableData: [
+        { name: "John Doe", age: "25" },
+        { name: "Jane Doe", age: "27" },
+        { name: "Jim Doe", age: "28" },
+        { name: "Jack Doe", age: "29" },
+      ],
+      pagination: {
+        currentPage: 1,
+        pageSize: 2,
+      },
+      total: 0,
+      locale: "en-US",
       dropdowns: [
         {
           title: "Preço",
@@ -88,29 +96,15 @@ export default {
       ],
     };
   },
-  created() {
-    this.fetchItems();
+  mounted() {
+    this.total = this.tableData.length;
   },
   methods: {
-    fetchItems() {
-      this.items = items;
-      this.displayedItems = this.items.slice(0, 20);
+    handleSizeChange(val) {
+      this.pagination.pageSize = val;
     },
-    showMore() {
-      this.displayedItems = this.displayedItems.concat(this.items.slice(0, 20));
-      this.items = this.items.slice(20);
-    },
-    sort(key) {
-      this.items = this.items.sort((a, b) => {
-        if (a[key] > b[key]) {
-          return 1;
-        }
-        if (a[key] < b[key]) {
-          return -1;
-        }
-        return 0;
-      });
-      this.displayedItems = this.items.slice(0, 20);
+    handleCurrentChange(val) {
+      this.pagination.currentPage = val;
     },
   },
 };
