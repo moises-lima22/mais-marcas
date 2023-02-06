@@ -67,12 +67,13 @@
         </el-dropdown-menu>
       </el-dropdown>
     </el-header>
-    <el-main class="p-0">
-      <el-row>
-        <el-col v-for="item in displayedItems" :key="item.id" :span="6">
-          <CardProduto :product="item" />
-        </el-col>
-      </el-row>
+    <el-main
+      class="p-0 d-flex justify-content-start"
+      style="min-height: 100px; flex-wrap: wrap"
+    >
+      <el-col style="width: auto" v-for="item in displayedItems" :key="item.id">
+        <CardProduto :product="item" />
+      </el-col>
     </el-main>
     <el-footer v-if="displayedItems.length < items.length">
       <el-button @click="showMore">Mostrar Mais</el-button>
