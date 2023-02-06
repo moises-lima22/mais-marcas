@@ -4,20 +4,21 @@
       <h3>Resultado da consulta</h3>
     </b-card-header>
     <b-card-body class="pl-0 pr-0 pb-0">
-      <el-table
-        :data="people"
-        stripe
-        :row-class-name="rowClass"
-        :header-cell-style="headerCellStyle"
-        :cell-style="cellStyle"
-      >
+      <el-table :data="people">
         <el-table-column label="Nome" prop="nome"></el-table-column>
         <el-table-column label="Email" prop="email"></el-table-column>
         <el-table-column label="Telefone" prop="telefone"></el-table-column>
         <el-table-column label="Endereço" prop="endereco"></el-table-column>
         <el-table-column label="Ação" width="65">
           <template slot-scope>
-            <chip-button tooltipText="Editar" />
+            <el-tooltip
+              class="item"
+              effect="dark"
+              content="Editar"
+              placement="top-start"
+            >
+              <el-button type="light" icon="el-icon-edit" circle></el-button>
+            </el-tooltip>
           </template>
         </el-table-column>
       </el-table>
@@ -122,12 +123,3 @@ export default {
   },
 };
 </script>
-
-<style>
-.el-table td.actions {
-  text-align: center;
-}
-.el-icon {
-  font-size: 200px;
-}
-</style>
