@@ -32,6 +32,15 @@
 
         <sidebar-item
           :link="{
+            name: 'Planejamento Pedido',
+            path: '/consulta-planejamento-pedido',
+            icon: 'ni ni-chart-pie-35 text-primary',
+          }"
+        >
+        </sidebar-item>
+
+        <sidebar-item
+          :link="{
             name: 'Icons',
             path: '/icons',
             icon: 'ni ni-planet text-blue',
