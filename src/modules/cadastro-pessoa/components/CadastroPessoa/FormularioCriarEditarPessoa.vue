@@ -180,13 +180,17 @@
       <b-row class="mt-4" slot="footer">
         <b-col cols="12" class="text-right">
           <a href="#!" class="btn" @click="goBack()">Voltar</a>
-          <base-button>Salvar</base-button>
+          <base-button @click="updateProfile">Salvar</base-button>
         </b-col>
       </b-row>
     </b-form>
   </card>
 </template>
 <script>
+import {
+  savePerson,
+  getPersons,
+} from "@/modules/cadastro-pessoa/service/index";
 export default {
   name: "formulario-criar-editar-pessoa",
   data() {
@@ -214,8 +218,27 @@ export default {
     };
   },
   methods: {
-    updateProfile() {
-      alert("Your data: " + JSON.stringify(this.user));
+    async updateProfile() {
+      const personData = {
+        firstName: "John 1",
+        lastName: "Doe 1",
+        email: "teste@example.com",
+        client: true,
+        seller: false,
+        employee: false,
+        workshop: false,
+        cpfOrCnpj: "123.456.789-00",
+        bankName: "Bank of America",
+        accountNumber: "123456",
+        routingNumber: "123456789",
+      };
+
+      console.log("object");
+
+      await savePerson(personData);
+
+      const response = await getPersons();
+      console.log("response", response);
     },
     goBack() {
       this.$router.push({ name: "consulta-pessoa" });

@@ -60,7 +60,7 @@ export default {
         { text: "Colaborador", value: "colaborador" },
         { text: "Oficina", value: "oficina" },
       ],
-      step: 2,
+      step: 0,
     };
   },
   methods: {

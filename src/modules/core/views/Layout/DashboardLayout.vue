@@ -15,10 +15,18 @@
         <sidebar-item
           :link="{
             name: 'Cadastro',
-            path: '/consulta-cadastro-pessoa',
             icon: 'ni ni-circle-08 text-primary',
           }"
         >
+          <sidebar-item
+            :link="{
+              name: 'Pessoa',
+              path: '/consulta-cadastro-pessoa',
+            }"
+          ></sidebar-item>
+          <sidebar-item
+            :link="{ name: 'Usuário', path: '/consulta-cadastro-pessoa' }"
+          ></sidebar-item>
         </sidebar-item>
 
         <sidebar-item
