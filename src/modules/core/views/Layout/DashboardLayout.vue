@@ -86,7 +86,7 @@
         <sidebar-item
           :link="{
             name: 'Login',
-            path: '/login',
+            path: 'auth/login',
             icon: 'ni ni-key-25 text-info',
           }"
         >

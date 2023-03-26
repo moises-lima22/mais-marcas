@@ -1,15 +1,20 @@
 <template>
-  <div class="main-content bg-default">
+  <div class="auth-layout background">
     <base-nav
       v-model="showMenu"
       :transparent="true"
       menu-classes="justify-content-end"
-      class="navbar-horizontal navbar-main navbar-top navbar-dark"
+      class="navbar-horizontal navbar-main navbar-dark"
       expand="lg"
     >
       <div slot="brand" class="navbar-wrapper">
         <b-navbar-brand to="/">
-          <img style="height: 60px" src="img/brand/logo-flexx.png" />
+          <img
+            src="../../../../../public/img/brand/logo-flexx.png"
+            alt="..."
+            class="navbar-brand-img"
+            style="min-height: 90px"
+          />
         </b-navbar-brand>
       </div>
 
@@ -18,7 +23,7 @@
           <b-row>
             <b-col cols="6" class="collapse-brand">
               <router-link to="/">
-                <img src="img/brand/green.png" />
+                <img src="../../../../../public/img/brand/green.png" />
               </router-link>
             </b-col>
             <b-col cols="6" class="collapse-close">
@@ -54,13 +59,13 @@
       </template>
     </base-nav>
 
-    <div class="main-content">
+    <div class="main-content mt-8 mb-8">
       <zoom-center-transition :duration="pageTransitionDuration" mode="out-in">
         <router-view></router-view>
       </zoom-center-transition>
     </div>
 
-    <footer class="py-5" id="footer-main" style="height: 170px !important">
+    <footer class="py-5" id="footer-main">
       <b-container>
         <b-row align-v="center" class="justify-content-xl-between">
           <b-col xl="6">
@@ -72,20 +77,16 @@
                 href="https://www.creative-tim.com"
                 class="font-weight-bold ml-1"
                 target="_blank"
-                >Flexx - Todos os direitos reservados.</a
+                >Mais Marcas - Todos os direitos reservados.</a
               >
             </div>
           </b-col>
           <b-col xl="6" class="col-xl-6">
             <b-nav
-              class="
-                nav-footer
-                justify-content-center justify-content-xl-end
-                text-light
-              "
+              class="nav-footer justify-content-center justify-content-xl-end text-light"
             >
-              <b-nav-item href="https://www.creative-tim.com" target="_blank">
-                <!-- <span class="text-light"> Creative Tim </span> -->
+              <b-nav-item href="https://maismarcas.online" target="_blank">
+                <span class="text-light"> Mais Marcas </span>
               </b-nav-item>
             </b-nav>
           </b-col>
@@ -202,5 +203,14 @@ $scaleSize: 0.8;
 
 a {
   color: #ffff;
+}
+
+.auth-layout {
+  position: absolute;
+  min-height: 100% !important;
+  min-width: 100%;
+  flex-direction: column;
+  align-content: space-between;
+  justify-content: space-between;
 }
 </style>
