@@ -9,6 +9,8 @@ test/unit/coverage
 
 package-lock.json
 
+.env.local
+
 # Editor directories and files
 .idea
 *.suo

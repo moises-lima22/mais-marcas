@@ -39,6 +39,15 @@ const router = new VueRouter({
   },
 });
 
+router.beforeEach((to, from, next) => {
+  const isAuthenticated = localStorage.getItem("accessToken");
+  if (to.name !== "login" && !isAuthenticated) {
+    next({ name: "login" });
+  } else {
+    next();
+  }
+});
+
 (function coreModule() {
   const coreModule = new CoreModule(router);
   coreModule.install(Vue);

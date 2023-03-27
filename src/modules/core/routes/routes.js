@@ -13,12 +13,14 @@ const routes = [
         name: "dashboard",
         component: () =>
           import(/* webpackChunkName: "dashboard" */ "../views/Dashboard.vue"),
+        meta: { requiresAuth: true },
       },
       {
         path: "icons",
         name: "icons",
         component: () =>
           import(/* webpackChunkName: "icons" */ "../views/Icons.vue"),
+        meta: { requiresAuth: true },
       },
       {
         path: "profile",
@@ -27,18 +29,21 @@ const routes = [
           import(
             /* webpackChunkName: "profile" */ "../views/Pages/UserProfile.vue"
           ),
+        meta: { requiresAuth: true },
       },
       {
         path: "maps",
         name: "maps",
         component: () =>
           import(/* webpackChunkName: "maps" */ "../views/GoogleMaps.vue"),
+        meta: { requiresAuth: true },
       },
       {
         path: "tables",
         name: "tables",
         component: () =>
           import(/* webpackChunkName: "tables" */ "../views/RegularTables.vue"),
+        meta: { requiresAuth: true },
       },
     ],
   },
@@ -51,6 +56,7 @@ const routes = [
         name: "login",
         component: () =>
           import(/* webpackChunkName: "login" */ "../views/Pages/Login.vue"),
+        meta: { requiresAuth: false },
       },
       {
         path: "register",
@@ -59,6 +65,7 @@ const routes = [
           import(
             /* webpackChunkName: "register" */ "../views/Pages/Register.vue"
           ),
+        meta: { requiresAuth: false },
       },
     ],
   },

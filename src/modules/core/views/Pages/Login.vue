@@ -30,11 +30,8 @@
               <div class="text-center text-muted mb-4">
                 <small>Entre com suas credenciais</small>
               </div>
-              <validation-observer
-                v-slot="{ handleSubmit }"
-                ref="formValidator"
-              >
-                <b-form role="form" @submit.prevent="handleSubmit(onSubmit)">
+              <validation-observer ref="formValidator">
+                <b-form role="form" @submit.prevent="handleSubmit()">
                   <base-input
                     alternative
                     class="mb-3"
@@ -42,7 +39,7 @@
                     :rules="{ required: true, email: true }"
                     prepend-icon="ni ni-email-83"
                     placeholder="Email"
-                    v-model="model.email"
+                    v-model="username"
                   >
                   </base-input>
 
@@ -54,11 +51,11 @@
                     prepend-icon="ni ni-lock-circle-open"
                     type="password"
                     placeholder="Password"
-                    v-model="model.password"
+                    v-model="password"
                   >
                   </base-input>
 
-                  <b-form-checkbox v-model="model.rememberMe"
+                  <b-form-checkbox v-model="rememberMe"
                     >lembre de min</b-form-checkbox
                   >
                   <div class="text-center">
@@ -91,19 +88,30 @@
   </div>
 </template>
 <script>
+import AuthService from "../../services/auth/api-auth";
+
 export default {
   data() {
     return {
-      model: {
-        email: "",
-        password: "",
-        rememberMe: false,
-      },
+      username: "moises.lima@nexus.online",
+      password: "Masterns@23",
+      rememberMe: false,
     };
   },
+  computed: {
+    isFormValid() {
+      return this.username && this.password;
+    },
+  },
   methods: {
-    onSubmit() {
-      // this will be called only after form is valid. You can do api call here to login
+    async handleSubmit() {
+      if (!this.isFormValid) return console.log("vazio");
+      try {
+        await AuthService.login(this.username, this.password);
+        this.$router.push("/");
+      } catch (error) {
+        console.log(error);
+      }
     },
   },
 };
