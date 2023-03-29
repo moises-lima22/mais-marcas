@@ -85,9 +85,9 @@
             <span>Support</span>
           </b-dropdown-item>
           <div class="dropdown-divider"></div>
-          <b-dropdown-item href="#!">
+          <b-dropdown-item @click="logout">
             <i class="ni ni-user-run"></i>
-            <span>Logout</span>
+            <span>Logouts</span>
           </b-dropdown-item>
         </template>
       </base-dropdown>
@@ -97,6 +97,7 @@
 <script>
 import { CollapseTransition } from "vue2-transitions";
 import { BaseNav, Modal } from "@/modules/core/components";
+import AuthService from "../../services/auth/api-auth";
 
 export default {
   components: {
@@ -135,6 +136,10 @@ export default {
     },
     closeDropDown() {
       this.activeNotifications = false;
+    },
+    logout() {
+      AuthService.logout();
+      this.$router.push({ name: "login" });
     },
   },
   computed: {

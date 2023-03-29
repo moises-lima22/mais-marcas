@@ -1,52 +1,11 @@
 import Vue from "vue";
-import VueRouter from "vue-router";
 
 import DashboardPlugin from "@/modules/core/plugins/dashboard-plugin";
 
 import CoreModule from "./modules/core/core-modules.js";
-import CadastroPessoa from "./modules/cadastro-pessoa/cadastro-pessoa-module";
-import PlanejamentoPedido from "./modules/planejamento-pedido/planejamento-pedido-module";
-import Pedido from "./modules/pedido/pedido-module";
-import routes from "./modules/core/routes/routes";
+import router from "./router";
 
-Vue.use(VueRouter);
 Vue.use(DashboardPlugin);
-
-(function modules() {
-  const cadastroPessoa = new CadastroPessoa();
-  cadastroPessoa.install(routes);
-
-  const pedido = new Pedido();
-  pedido.install(routes);
-
-  const planejamentoPedido = new PlanejamentoPedido();
-  planejamentoPedido.install(routes);
-})();
-
-// configure router
-const router = new VueRouter({
-  mode: "history",
-  routes, // short for routes: routes
-  linkActiveClass: "active",
-  scrollBehavior: (to, from, savedPosition) => {
-    if (savedPosition) {
-      return savedPosition;
-    }
-    if (to.hash) {
-      return { selector: to.hash };
-    }
-    return { x: 0, y: 0 };
-  },
-});
-
-router.beforeEach((to, from, next) => {
-  const isAuthenticated = localStorage.getItem("accessToken");
-  if (to.name !== "login" && !isAuthenticated) {
-    next({ name: "login" });
-  } else {
-    next();
-  }
-});
 
 (function coreModule() {
   const coreModule = new CoreModule(router);
