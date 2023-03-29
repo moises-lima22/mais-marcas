@@ -28,6 +28,7 @@
 
 <script>
 export default {
+  name: "card-listagem-pedido",
   data() {
     return {
       people: [

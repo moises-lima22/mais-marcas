@@ -45,14 +45,11 @@
 import Card from "@/modules/core/components/Cards/Card";
 
 import projects from "@/modules/core/views/Tables/projects.js";
-import { Table, TableColumn } from "element-ui";
 
 export default {
   name: "kanban",
   components: {
     Card,
-    [Table.name]: Table,
-    [TableColumn.name]: TableColumn,
   },
   props: {
     title: {
@@ -79,5 +76,4 @@ export default {
   },
 };
 </script>
-<style scoped>
-</style>
+<style scoped></style>

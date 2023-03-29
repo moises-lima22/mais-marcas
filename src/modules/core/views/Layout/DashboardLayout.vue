@@ -15,8 +15,34 @@
         <sidebar-item
           :link="{
             name: 'Cadastro',
-            path: '/consulta-cadastro-pessoa',
             icon: 'ni ni-circle-08 text-primary',
+          }"
+        >
+          <sidebar-item
+            :link="{
+              name: 'Pessoa',
+              path: '/consulta-cadastro-pessoa',
+            }"
+          ></sidebar-item>
+          <sidebar-item
+            :link="{ name: 'Usuário', path: '/consulta-cadastro-pessoa' }"
+          ></sidebar-item>
+        </sidebar-item>
+
+        <sidebar-item
+          :link="{
+            name: 'Pedido',
+            path: '/consulta-pedido',
+            icon: 'ni ni-bag-17 text-primary',
+          }"
+        >
+        </sidebar-item>
+
+        <sidebar-item
+          :link="{
+            name: 'Planejamento Pedido',
+            path: '/consulta-planejamento-pedido',
+            icon: 'ni ni-chart-pie-35 text-primary',
           }"
         >
         </sidebar-item>
@@ -60,7 +86,7 @@
         <sidebar-item
           :link="{
             name: 'Login',
-            path: '/login',
+            path: 'auth/login',
             icon: 'ni ni-key-25 text-info',
           }"
         >

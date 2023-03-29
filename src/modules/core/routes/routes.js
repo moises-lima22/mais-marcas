@@ -1,12 +1,16 @@
 import DashboardLayout from "@/modules/core/views/Layout/DashboardLayout.vue";
 import AuthLayout from "@/modules/core/views/Pages/AuthLayout.vue";
 import NotFound from "@/modules/core/views/NotFoundPage.vue";
+import cadastroPessoaRoute from "@/modules/cadastro-pessoa/router";
+import pedidoRoute from "@/modules/pedido/router";
+import planejamentoPedidoRoute from "@/modules/planejamento-pedido/router";
 
 const routes = [
   {
     path: "/",
     redirect: "dashboard",
     component: DashboardLayout,
+    meta: { requiresAuth: true },
     children: [
       {
         path: "dashboard",
@@ -40,11 +44,15 @@ const routes = [
         component: () =>
           import(/* webpackChunkName: "tables" */ "../views/RegularTables.vue"),
       },
+      ...cadastroPessoaRoute,
+      ...pedidoRoute,
+      ...planejamentoPedidoRoute,
     ],
   },
   {
     path: "/Auth",
     component: AuthLayout,
+    meta: { requiresAuth: false },
     children: [
       {
         path: "login",
@@ -62,7 +70,27 @@ const routes = [
       },
     ],
   },
-  { path: "", component: NotFound },
+  {
+    path: "*",
+    component: NotFound,
+    meta: { requiresAuth: false },
+  },
 ];
+
+function addMeta(route) {
+  if (route.meta && route.meta.requiresAuth) {
+    console.log(route);
+
+    if (route.children) {
+      route.children.forEach((child) => {
+        child.meta = { requiresAuth: true };
+      });
+    }
+    return;
+  }
+}
+
+// Adiciona a meta tag em todas as rotas
+routes.forEach((route) => addMeta(route));
 
 export default routes;

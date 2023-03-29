@@ -4,25 +4,14 @@
       <b-col class="p-0">
         <h3>Parâmetros da consulta</h3>
       </b-col>
-      <div class="ml-auto">
-        <b-button
-          class="btn-primary shadow-none bg-transparent"
-          @click="novoCadastro()"
-        >
-          <div class="d-flex align-content-center">
-            <span>Novo cadastro</span>
-            <i class="ni ni-fat-add" style="font-size: 20px"></i>
-          </div>
-        </b-button>
-      </div>
     </b-card-header>
     <b-card-body class="pl-0 pr-0 pb-0">
       <b-row>
         <b-col lg="6">
           <base-input
             type="text"
-            label="Nome"
-            placeholder="Pesquise por nome"
+            label="Número pedido"
+            placeholder="Pesquise pelo número do pedido"
             clearableIcon
             v-model="input"
             @input="(v) => teste(v)"
@@ -52,7 +41,7 @@
 </template>
 <script>
 export default {
-  name: "card-consulta-cadastro-pessoa",
+  name: "card-consulta-planejamento-pedido",
   data() {
     return {
       input: "",
@@ -63,7 +52,7 @@ export default {
       console.log(v);
     },
     novoCadastro() {
-      this.$router.push({ name: "novo-cadastro-pessoa" });
+      this.$router.push({ name: "novo-pedido" });
       return;
     },
   },
