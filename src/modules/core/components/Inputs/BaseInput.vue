@@ -35,10 +35,18 @@
             v-bind="$attrs"
             :valid="valid"
             :required="required"
+            :disabled="disabled"
             class="form-control"
             :class="[
               { 'is-valid': valid && validated && successMessage },
               { 'is-invalid': invalid && validated },
+              {
+                'is-filled':
+                  filled &&
+                  value !== undefined &&
+                  value !== null &&
+                  value !== '',
+              },
               inputClasses,
             ]"
           />
@@ -146,6 +154,14 @@ export default {
       type: String,
       description: "Input name (used for validation)",
       default: "",
+    },
+    disabled: {
+      type: Boolean,
+      description: "Whether input is disabled",
+    },
+    filled: {
+      type: Boolean,
+      description: "Whether input is filled",
     },
   },
   data() {

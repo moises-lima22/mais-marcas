@@ -93,7 +93,7 @@ import AuthService from "../../services/auth/api-auth";
 export default {
   data() {
     return {
-      username: "moises.lima@nexus.online",
+      username: "moises.lima@nexus-softwares.online",
       password: "Masterns@23",
       rememberMe: false,
     };

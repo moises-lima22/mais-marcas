@@ -17,7 +17,7 @@
               type="text"
               label="Primeiro nome"
               placeholder="Primeiro nome"
-              v-model="user.firstName"
+              v-model="person.firstName"
               trim
             >
             </b-form-input>
@@ -27,7 +27,7 @@
               type="text"
               label="Último nome"
               placeholder="Último nome"
-              v-model="user.lastName"
+              v-model="person.lastName"
             >
             </base-input>
           </b-col>
@@ -38,8 +38,8 @@
             <base-input
               type="email"
               label="Email:"
-              placeholder="mike@email.com"
-              v-model="user.email"
+              placeholder="Informe um email"
+              v-model="person.email"
               required
             >
             </base-input>
@@ -65,7 +65,8 @@
               type="text"
               label="CPF/CNPJ"
               placeholder="Informe o CPF ou CNPJ"
-              v-model="user.cpfCnpj"
+              v-model="person.cpfCnpj"
+              v-mask="['###.###.###-##', '##.###.###/####-##']"
             >
             </base-input>
           </b-col>
@@ -84,7 +85,7 @@
               type="text"
               label="Nome do banco"
               placeholder="Nome do banco"
-              v-model="user.bankName"
+              v-model="person.bankName"
             >
             </base-input>
           </b-col>
@@ -93,7 +94,7 @@
               type="text"
               label="Tipo da conta"
               placeholder="Tipo da conta"
-              v-model="user.accountType"
+              v-model="person.accountType"
             >
             </base-input>
           </b-col>
@@ -104,7 +105,7 @@
               type="text"
               label="Número da agência"
               placeholder="Número da agência"
-              v-model="user.agencyNumber"
+              v-model="person.agencyNumber"
             >
             </base-input>
           </b-col>
@@ -113,7 +114,7 @@
               type="text"
               label="Número da conta"
               placeholder="Número da conta"
-              v-model="user.accountNumber"
+              v-model="person.accountNumber"
             >
             </base-input>
           </b-col>
@@ -122,38 +123,83 @@
 
       <hr class="my-4" />
 
+      <!-- Informações de contato -->
       <h6 class="heading-small text-muted mb-4">Informações de contato</h6>
 
       <div class="pl-lg-4">
         <b-row>
-          <b-col md="12">
+          <b-col md="2">
             <base-input
               type="text"
-              label="Endereço"
-              placeholder="Endereço residencial"
-              v-model="user.address"
+              label="CEP"
+              placeholder="Informe o CEP"
+              v-model="person.cep"
+              required
+              v-mask="'#####-###'"
+            >
+            </base-input>
+          </b-col>
+          <b-col md="5">
+            <base-input
+              type="text"
+              label="Logradouro"
+              placeholder="Rua/Avenida"
+              filled
+              disabled
+            >
+            </base-input>
+          </b-col>
+          <b-col md="2">
+            <base-input
+              type="text"
+              label="Número"
+              placeholder="Informe o número."
+              required
+            >
+            </base-input>
+          </b-col>
+          <b-col md="3">
+            <base-input
+              type="text"
+              label="Bairro"
+              placeholder="Informe o bairro."
+              filled
+              disabled
             >
             </base-input>
           </b-col>
         </b-row>
         <b-row>
-          <b-col lg="6">
+          <b-col lg="3">
             <base-input
               type="text"
-              label="Telefone"
-              placeholder="Telefone (formato: (XX) XXXX-XXXX)"
-              v-model="user.phone"
-              :mask="['(##) ####-####']"
+              label="Localidade"
+              placeholder="Informe a localidade"
+              filled
+              disabled
             >
             </base-input>
           </b-col>
-          <b-col lg="6">
+          <b-col lg="1">
+            <base-input type="text" label="UF" filled disabled> </base-input>
+          </b-col>
+          <b-col lg="4">
             <base-input
               type="text"
               label="Celular"
-              placeholder="Celular (formato: (XX) XXXXX-XXXX)"
-              v-model="user.cellPhone"
-              :mask="['(##) #####-####']"
+              placeholder="Informe o celular"
+              v-model="person.cellPhone"
+              v-mask="'(##) #####-####'"
+            >
+            </base-input>
+          </b-col>
+          <b-col lg="4">
+            <base-input
+              type="text"
+              label="Telefone"
+              placeholder="Informe telefone"
+              v-model="person.phone"
+              v-mask="'(##) ####-####'"
             >
             </base-input>
           </b-col>
@@ -174,13 +220,14 @@
             rows="4"
             id="about-form-textaria"
             placeholder="Espaço livre ..."
+            v-model="person.note"
           ></b-form-textarea>
         </b-form-group>
       </div>
       <b-row class="mt-4" slot="footer">
         <b-col cols="12" class="text-right">
           <a href="#!" class="btn" @click="goBack()">Voltar</a>
-          <base-button @click="updateProfile">Salvar</base-button>
+          <base-button>Salvar</base-button>
         </b-col>
       </b-row>
     </b-form>
@@ -191,23 +238,29 @@ import {
   savePerson,
   getPersons,
 } from "@/modules/cadastro-pessoa/service/index";
+
 export default {
   name: "formulario-criar-editar-pessoa",
   data() {
     return {
-      user: {
-        company: "Creative Code Inc.",
-        username: "michael23",
+      person: {
+        firstName: "",
+        lastName: "",
         email: "",
-        firstName: "Mike",
-        lastName: "Andrew",
-        address: "Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09",
-        city: "New York",
-        country: "USA",
-        postalCode: "",
-        aboutMe: `Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.`,
-        cpfCnpj: "333.111-198-03",
+        isClient: null,
+        isSeller: null,
+        isEmployee: null,
+        isWorkshop: null,
+        cpfOrCnpj: "",
+        cellNumber: "",
+        phone: "",
+        bankName: "",
+        accountNumber: "",
+        cep: "",
+        numberAddress: "",
+        note: "",
       },
+
       selected: [], // Must be an array reference!
       options: [
         { text: "Cliente", value: "cliente" },
@@ -219,23 +272,9 @@ export default {
   },
   methods: {
     async updateProfile() {
-      const personData = {
-        firstName: "John 1",
-        lastName: "Doe 1",
-        email: "teste@example.com",
-        client: true,
-        seller: false,
-        employee: false,
-        workshop: false,
-        cpfOrCnpj: "123.456.789-00",
-        bankName: "Bank of America",
-        accountNumber: "123456",
-        routingNumber: "123456789",
-      };
+      console.log(person);
 
-      console.log("object");
-
-      await savePerson(personData);
+      // await savePerson(personData);
 
       const response = await getPersons();
       console.log("response", response);
