@@ -79,8 +79,6 @@ const routes = [
 
 function addMeta(route) {
   if (route.meta && route.meta.requiresAuth) {
-    console.log(route);
-
     if (route.children) {
       route.children.forEach((child) => {
         child.meta = { requiresAuth: true };

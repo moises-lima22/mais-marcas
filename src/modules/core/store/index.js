@@ -1,10 +1,12 @@
-import Vue from "vue";
-import Vuex from "vuex";
+import state from "./state";
+import mutation from "./mutations";
+import mutationTypes from "./mutations-types";
+import * as actions from "./actions";
 
-Vue.use(Vuex);
-
-export default new Vuex.Store() <
-  any >
-  {
-    strict: process.env.NODE_ENV !== "production",
-  };
+export default {
+  state,
+  mutation,
+  mutationTypes,
+  actions,
+  namespaced: true,
+};

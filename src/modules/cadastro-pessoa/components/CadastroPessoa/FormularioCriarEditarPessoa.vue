@@ -237,7 +237,8 @@
 import {
   savePerson,
   getPersons,
-} from "@/modules/cadastro-pessoa/service/index";
+  searchCep,
+} from "@/modules/cadastro-pessoa/service/personService";
 
 export default {
   name: "formulario-criar-editar-pessoa",
@@ -260,7 +261,6 @@ export default {
         numberAddress: "",
         note: "",
       },
-
       selected: [], // Must be an array reference!
       options: [
         { text: "Cliente", value: "cliente" },
@@ -270,14 +270,20 @@ export default {
       ],
     };
   },
+  mounted() {
+    console.log(this);
+  },
   methods: {
     async updateProfile() {
-      console.log(person);
+      console.log(this.$$router);
 
       // await savePerson(personData);
 
       const response = await getPersons();
       console.log("response", response);
+    },
+    async searchCep(cep) {
+      const response = await searchCep(cep);
     },
     goBack() {
       this.$router.push({ name: "consulta-pessoa" });
@@ -285,4 +291,3 @@ export default {
   },
 };
 </script>
-<style></style>

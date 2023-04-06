@@ -1,4 +1,4 @@
-import axios from "@/axios-config";
+import axios from "@/modules/axios/axios-config";
 
 const AuthService = {
   async login(username, password) {

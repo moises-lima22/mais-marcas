@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import routes from "./modules/core/routes/routes";
+import routes from "../core/routes/routes";
 import authGuard from "./security/authGuard";
 
 Vue.use(VueRouter);
