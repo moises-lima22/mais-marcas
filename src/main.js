@@ -9,7 +9,6 @@ import store from "./modules/store";
 Vue.use(DashboardPlugin);
 
 (function coreModule() {
-  console.log(store);
   const coreModule = new CoreModule(router, store);
   coreModule.install(Vue);
 })();

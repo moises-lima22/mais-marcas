@@ -1,4 +1,5 @@
 import axios from "axios";
+import { createRestRequest } from "../../utils/restObjectFactory";
 
 export const getPersons = async () => {
   try {
@@ -22,10 +23,9 @@ export const savePerson = async (personData) => {
 };
 
 export const searchCep = async (cep) => {
-  try {
-    const response = await axios.get(`https://viacep.com.br/ws/${cep}/json/`);
-    return response.data;
-  } catch (error) {
-    console.error(error);
-  }
+  const url = `https://viacep.com.br/ws/${cep}/json/`;
+
+  const response = await createRestRequest(axios.get(url));
+
+  return response;
 };

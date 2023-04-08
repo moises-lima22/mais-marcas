@@ -73,7 +73,11 @@
         </div>
       </slot>
       <slot name="error">
-        <div v-if="errors[0]" class="invalid-feedback" style="display: block">
+        <div
+          v-if="errors[0] && errorDetails"
+          class="invalid-feedback"
+          style="display: block"
+        >
           {{ errors[0] }}
         </div>
       </slot>
@@ -105,6 +109,11 @@ export default {
     error: {
       type: String,
       description: "Input error (below input)",
+    },
+    errorDetails: {
+      type: Boolean,
+      description: "Input error details ",
+      default: false,
     },
     successMessage: {
       type: String,

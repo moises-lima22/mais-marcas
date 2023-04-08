@@ -6,7 +6,7 @@
       </b-col>
     </b-row>
 
-    <b-form @submit.prevent="updateProfile">
+    <b-form>
       <h6 class="heading-small text-muted mb-4">Informações do usuário</h6>
 
       <div class="pl-lg-4">
@@ -17,8 +17,7 @@
               type="text"
               label="Primeiro nome"
               placeholder="Primeiro nome"
-              v-model="person.firstName"
-              trim
+              v-model.trim="person.firstName"
             >
             </b-form-input>
           </b-col>
@@ -27,7 +26,7 @@
               type="text"
               label="Último nome"
               placeholder="Último nome"
-              v-model="person.lastName"
+              v-model.trim="person.lastName"
             >
             </base-input>
           </b-col>
@@ -39,7 +38,7 @@
               type="email"
               label="Email:"
               placeholder="Informe um email"
-              v-model="person.email"
+              v-model.trim="person.email"
               required
             >
             </base-input>
@@ -47,15 +46,24 @@
           <b-col lg="6">
             <label class="m-0"> Perfil: </label>
 
-            <b-form-group v-slot="{ ariaDescribedby }">
-              <b-form-checkbox-group
-                id="checkbox-group-1"
-                v-model="selected"
-                :options="options"
-                :aria-describedby="ariaDescribedby"
-                name="flavour-1"
-              ></b-form-checkbox-group>
-            </b-form-group>
+            <b-row class="m-0">
+              <b-col class="p-0">
+                <label> Cliente </label>
+                <b-form-checkbox v-model="person.isClient"> </b-form-checkbox>
+              </b-col>
+              <b-col class="p-0">
+                <label> Vendedor </label>
+                <b-form-checkbox v-model="person.isSeller"> </b-form-checkbox>
+              </b-col>
+              <b-col class="p-0">
+                <label> Colaborador </label>
+                <b-form-checkbox v-model="person.isEmployee"> </b-form-checkbox>
+              </b-col>
+              <b-col class="p-0">
+                <label> Oficina </label>
+                <b-form-checkbox v-model="person.isWorkshop"> </b-form-checkbox>
+              </b-col>
+            </b-row>
           </b-col>
         </b-row>
 
@@ -65,7 +73,7 @@
               type="text"
               label="CPF/CNPJ"
               placeholder="Informe o CPF ou CNPJ"
-              v-model="person.cpfCnpj"
+              v-model="person.cpfOrCnpj"
               v-mask="['###.###.###-##', '##.###.###/####-##']"
             >
             </base-input>
@@ -85,18 +93,18 @@
               type="text"
               label="Nome do banco"
               placeholder="Nome do banco"
-              v-model="person.bankName"
+              v-model.trim="person.bankName"
             >
             </base-input>
           </b-col>
           <b-col lg="6">
-            <base-input
-              type="text"
-              label="Tipo da conta"
-              placeholder="Tipo da conta"
-              v-model="person.accountType"
+            <label for="tipoConta">Tipo de Conta:</label>
+            <b-form-select
+              id="tipoConta"
+              v-model="person.bankAccountType"
+              :options="bankAccountTypes"
             >
-            </base-input>
+            </b-form-select>
           </b-col>
         </b-row>
         <b-row>
@@ -105,7 +113,7 @@
               type="text"
               label="Número da agência"
               placeholder="Número da agência"
-              v-model="person.agencyNumber"
+              v-model="person.bankAgencyNumber"
             >
             </base-input>
           </b-col>
@@ -114,7 +122,7 @@
               type="text"
               label="Número da conta"
               placeholder="Número da conta"
-              v-model="person.accountNumber"
+              v-model="person.bankAccountNumber"
             >
             </base-input>
           </b-col>
@@ -136,6 +144,7 @@
               v-model="person.cep"
               required
               v-mask="'#####-###'"
+              @change="searchCep"
             >
             </base-input>
           </b-col>
@@ -146,6 +155,7 @@
               placeholder="Rua/Avenida"
               filled
               disabled
+              :value="address.logradouro"
             >
             </base-input>
           </b-col>
@@ -155,6 +165,7 @@
               label="Número"
               placeholder="Informe o número."
               required
+              v-model="person.addressNumber"
             >
             </base-input>
           </b-col>
@@ -165,6 +176,7 @@
               placeholder="Informe o bairro."
               filled
               disabled
+              :value="address.bairro"
             >
             </base-input>
           </b-col>
@@ -177,18 +189,26 @@
               placeholder="Informe a localidade"
               filled
               disabled
+              :value="address.localidade"
             >
             </base-input>
           </b-col>
           <b-col lg="1">
-            <base-input type="text" label="UF" filled disabled> </base-input>
+            <base-input
+              type="text"
+              label="UF"
+              filled
+              disabled
+              :value="address.uf"
+            >
+            </base-input>
           </b-col>
           <b-col lg="4">
             <base-input
               type="text"
               label="Celular"
               placeholder="Informe o celular"
-              v-model="person.cellPhone"
+              v-model="person.cellNumber"
               v-mask="'(##) #####-####'"
             >
             </base-input>
@@ -220,14 +240,16 @@
             rows="4"
             id="about-form-textaria"
             placeholder="Espaço livre ..."
-            v-model="person.note"
+            v-model.trim="person.note"
           ></b-form-textarea>
         </b-form-group>
       </div>
       <b-row class="mt-4" slot="footer">
         <b-col cols="12" class="text-right">
           <a href="#!" class="btn" @click="goBack()">Voltar</a>
-          <base-button>Salvar</base-button>
+          <b-button variant="primary" @click.prevent="updateProfile">
+            Salvar
+          </b-button>
         </b-col>
       </b-row>
     </b-form>
@@ -245,45 +267,78 @@ export default {
   data() {
     return {
       person: {
-        firstName: "",
-        lastName: "",
-        email: "",
+        firstName: null,
+        lastName: null,
+        email: null,
         isClient: null,
         isSeller: null,
         isEmployee: null,
         isWorkshop: null,
-        cpfOrCnpj: "",
-        cellNumber: "",
-        phone: "",
-        bankName: "",
-        accountNumber: "",
-        cep: "",
-        numberAddress: "",
-        note: "",
+        cpfOrCnpj: null,
+        cellNumber: null,
+        phone: null,
+        bankName: null,
+        bankAccountNumber: null,
+        bankAgencyNumber: null,
+        bankAccountType: null,
+        cep: null,
+        addressNumber: null,
+        note: null,
       },
-      selected: [], // Must be an array reference!
-      options: [
-        { text: "Cliente", value: "cliente" },
-        { text: "Vendedor", value: "vendedor" },
-        { text: "Colaborador", value: "colaborador" },
-        { text: "Oficina", value: "oficina" },
+      address: {
+        cep: null,
+        logradouro: null,
+        complemento: null,
+        bairro: null,
+        localidade: null,
+        uf: null,
+      },
+      bankAccountTypes: [
+        {
+          value: null,
+          text: "Selecione uma conta",
+        },
+        {
+          value: "CHECKING",
+          text: "Corrente",
+        },
+        { value: "SAVINGS", text: "Poupança" },
+        { value: "SALARY", text: "Salário" },
+        { value: "INVESTMENT", text: "Investimento" },
       ],
     };
   },
-  mounted() {
-    console.log(this);
-  },
   methods: {
     async updateProfile() {
-      console.log(this.$$router);
-
+      console.log(this.person);
       // await savePerson(personData);
 
-      const response = await getPersons();
-      console.log("response", response);
+      // const response = await getPersons();
+      // console.log("response", response);
     },
-    async searchCep(cep) {
-      const response = await searchCep(cep);
+    async searchCep() {
+      const cepRegex = /^[0-9]{5}-?[0-9]{3}$/;
+
+      if (!cepRegex.test(this.person.cep)) {
+        this.$notify.warning("CEP inválido");
+        return;
+      }
+
+      const response = await searchCep(this.person.cep);
+
+      if (response.hasError) {
+        this.$notify.warning("Não encontramos o cep digitado");
+        return;
+      }
+
+      const { data } = response.content;
+
+      if (data.hasOwnProperty("erro")) {
+        this.$notify.warning("Não encontramos o cep digitado");
+        return;
+      }
+
+      this.address = response.content.data;
     },
     goBack() {
       this.$router.push({ name: "consulta-pessoa" });
