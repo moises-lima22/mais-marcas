@@ -8,11 +8,11 @@ module.exports = {
   collectCoverage: true, // Habilita a coleta de cobertura de código
   coverageReporters: ["html", "text-summary"], // Formatos de relatórios de cobertura
   coverageDirectory: "<rootDir>/coverage", // Pasta onde os relatórios de cobertura serão gerados
-  collectCoverageFrom: [
-    "src/**/*.{js,jsx,ts,tsx,vue}",
-    "!src/modules/core/**",
-    "!src/main.js", // Arquivo de entrada principal, normalmente não precisa ser coberto
-    "!src/router/**", // Arquivos de configuração do router, normalmente não precisam ser cobertos
-    "!**/node_modules/**", // Pastas de node_modules, normalmente não precisam ser cobertas
-  ],
+  // collectCoverageFrom: [
+  //   "src/**/*.{js,jsx,ts,tsx,vue}",
+  //   "!src/modules/core/**",
+  //   "!src/main.js", // Arquivo de entrada principal, normalmente não precisa ser coberto
+  //   "!src/router/**", // Arquivos de configuração do router, normalmente não precisam ser cobertos
+  //   "!**/node_modules/**", // Pastas de node_modules, normalmente não precisam ser cobertas
+  // ],
 };
