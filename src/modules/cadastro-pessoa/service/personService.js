@@ -1,25 +1,17 @@
 import axios from "axios";
 import { createRestRequest } from "../../utils/restObjectFactory";
 
+const BASE_URL = "api/v1/persons";
+
 export const getPersons = async () => {
-  try {
-    const response = await axios.get("http://localhost:8888/persons");
-    return response.data;
-  } catch (error) {
-    console.error(error);
-  }
+  const response = await createRestRequest(axios.get(BASE_URL));
+  return response;
 };
 
-export const savePerson = async (personData) => {
-  try {
-    const response = await axios.post(
-      "http://localhost:8888/persons/save",
-      personData
-    );
-    return response.data;
-  } catch (error) {
-    console.error(error);
-  }
+export const savePerson = async (person) => {
+  const url = `${BASE_URL}/save`;
+  const response = await createRestRequest(axios.post(url, { person }));
+  return response;
 };
 
 export const searchCep = async (cep) => {

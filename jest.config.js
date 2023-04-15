@@ -11,7 +11,7 @@ module.exports = {
     "**/__tests__/**/*.spec.[jt]s?(x)",
     "**/tests/unit/**/*.spec.[jt]s?(x)",
   ],
-  transformIgnorePatterns: ["/node_modules/"], // Pastas que devem ser ignoradas na transformação
+  transformIgnorePatterns: ["/node_modules/(?!element-ui)"], // Pastas que devem ser ignoradas na transformação
   collectCoverage: true, // Habilita a coleta de cobertura de código
   coverageReporters: ["html", "text-summary"], // Formatos de relatórios de cobertura
   coverageDirectory: "<rootDir>/coverage", // Pasta onde os relatórios de cobertura serão gerados
@@ -22,4 +22,5 @@ module.exports = {
     "!src/router/**", // Arquivos de configuração do router, normalmente não precisam ser cobertos
     "!**/node_modules/**", // Pastas de node_modules, normalmente não precisam ser cobertas
   ],
+  // silent: true,
 };

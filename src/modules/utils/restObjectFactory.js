@@ -26,7 +26,6 @@ const createRestRequest = async (requestFunction) => {
     const response = await requestFunction;
     return createRestObject(response);
   } catch (error) {
-    console.error(error);
     return createRestErrorObject(error);
   }
 };

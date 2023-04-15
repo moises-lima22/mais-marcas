@@ -29,6 +29,7 @@
         </div>
         <slot v-bind="slotData">
           <input
+            :name="name"
             :value="value"
             :type="type"
             v-on="listeners"

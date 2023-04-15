@@ -6,7 +6,7 @@
       </b-col>
     </b-row>
 
-    <b-form>
+    <b-form name="form">
       <h6 class="heading-small text-muted mb-4">Informações do usuário</h6>
 
       <div class="pl-lg-4">
@@ -18,6 +18,7 @@
               label="Primeiro nome"
               placeholder="Primeiro nome"
               v-model.trim="person.firstName"
+              name="firstName"
             >
             </b-form-input>
           </b-col>
@@ -27,6 +28,7 @@
               label="Último nome"
               placeholder="Último nome"
               v-model.trim="person.lastName"
+              name="lastName"
             >
             </base-input>
           </b-col>
@@ -39,6 +41,7 @@
               label="Email:"
               placeholder="Informe um email"
               v-model.trim="person.email"
+              name="email"
               required
             >
             </base-input>
@@ -49,19 +52,23 @@
             <b-row class="m-0">
               <b-col class="p-0">
                 <label> Cliente </label>
-                <b-form-checkbox v-model="person.isClient"> </b-form-checkbox>
+                <b-form-checkbox name="isClient" v-model="person.isClient">
+                </b-form-checkbox>
               </b-col>
               <b-col class="p-0">
                 <label> Vendedor </label>
-                <b-form-checkbox v-model="person.isSeller"> </b-form-checkbox>
+                <b-form-checkbox name="isSeller" v-model="person.isSeller">
+                </b-form-checkbox>
               </b-col>
               <b-col class="p-0">
                 <label> Colaborador </label>
-                <b-form-checkbox v-model="person.isEmployee"> </b-form-checkbox>
+                <b-form-checkbox name="isEmployee" v-model="person.isEmployee">
+                </b-form-checkbox>
               </b-col>
               <b-col class="p-0">
                 <label> Oficina </label>
-                <b-form-checkbox v-model="person.isWorkshop"> </b-form-checkbox>
+                <b-form-checkbox name="isWorkshop" v-model="person.isWorkshop">
+                </b-form-checkbox>
               </b-col>
             </b-row>
           </b-col>
@@ -74,7 +81,8 @@
               label="CPF/CNPJ"
               placeholder="Informe o CPF ou CNPJ"
               v-model="person.cpfOrCnpj"
-              v-mask="['###.###.###-##', '##.###.###/####-##']"
+              name="cpfOrCnpj"
+              v-mask="('###.###.###-##', '##.###.###/####-##')"
             >
             </base-input>
           </b-col>
@@ -94,6 +102,7 @@
               label="Nome do banco"
               placeholder="Nome do banco"
               v-model.trim="person.bankName"
+              name="bankName"
             >
             </base-input>
           </b-col>
@@ -102,6 +111,7 @@
             <b-form-select
               id="tipoConta"
               v-model="person.bankAccountType"
+              name="bankAccountType"
               :options="bankAccountTypes"
             >
             </b-form-select>
@@ -114,6 +124,7 @@
               label="Número da agência"
               placeholder="Número da agência"
               v-model="person.bankAgencyNumber"
+              name="bankAgencyNumber"
             >
             </base-input>
           </b-col>
@@ -123,6 +134,7 @@
               label="Número da conta"
               placeholder="Número da conta"
               v-model="person.bankAccountNumber"
+              name="bankAccountNumber"
             >
             </base-input>
           </b-col>
@@ -142,6 +154,7 @@
               label="CEP"
               placeholder="Informe o CEP"
               v-model="person.cep"
+              name="cep"
               required
               v-mask="'#####-###'"
               @change="searchCep"
@@ -166,6 +179,7 @@
               placeholder="Informe o número."
               required
               v-model="person.addressNumber"
+              name="addressNumber"
             >
             </base-input>
           </b-col>
@@ -209,6 +223,7 @@
               label="Celular"
               placeholder="Informe o celular"
               v-model="person.cellNumber"
+              name="cellNumber"
               v-mask="'(##) #####-####'"
             >
             </base-input>
@@ -219,6 +234,7 @@
               label="Telefone"
               placeholder="Informe telefone"
               v-model="person.phone"
+              name="phone"
               v-mask="'(##) ####-####'"
             >
             </base-input>
@@ -241,13 +257,18 @@
             id="about-form-textaria"
             placeholder="Espaço livre ..."
             v-model.trim="person.note"
+            name="note"
           ></b-form-textarea>
         </b-form-group>
       </div>
       <b-row class="mt-4" slot="footer">
         <b-col cols="12" class="text-right">
-          <a href="#!" class="btn" @click="goBack()">Voltar</a>
-          <b-button variant="primary" @click.prevent="updateProfile">
+          <a href="#!" class="btn" name="btnVoltar" @click="goBack()">Voltar</a>
+          <b-button
+            name="btnPersonSave"
+            variant="primary"
+            @click.prevent="saveOrUpdatePerson"
+          >
             Salvar
           </b-button>
         </b-col>
@@ -309,12 +330,14 @@ export default {
     };
   },
   methods: {
-    async updateProfile() {
-      console.log(this.person);
-      // await savePerson(personData);
+    async saveOrUpdatePerson() {
+      const response = await savePerson(this.person);
 
-      // const response = await getPersons();
-      // console.log("response", response);
+      if (response.hasError) {
+        this.$notify.error("Não foi possível salvar o cadastro");
+        return;
+      }
+      this.$notify.success("Cadastro salvo com sucesso");
     },
     async searchCep() {
       const cepRegex = /^[0-9]{5}-?[0-9]{3}$/;
