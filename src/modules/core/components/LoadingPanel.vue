@@ -1,25 +1,44 @@
 <template>
-  <b-row v-loading="true" id="loading"></b-row>
+  <div class="loading">
+    <div class="loading-spinner"></div>
+  </div>
 </template>
-<script>
-import Vue from 'vue';
-import { Loading } from 'element-ui';
 
-Vue.use(Loading.directive);
-export default {};
+<script>
+export default {
+  name: "Loading",
+};
 </script>
-<style>
-#loading {
-  min-height: 200px;
+
+<style scoped>
+.loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
   display: flex;
+  justify-content: center;
   align-items: center;
 }
 
-.el-loading-spinner .path {
-  stroke: #66615b !important;
+.loading-spinner {
+  /* Estilos do spinner de carregamento */
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
 }
-
-.el-loading-mask {
-  background: transparent !important;
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 </style>

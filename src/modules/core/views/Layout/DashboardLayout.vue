@@ -1,6 +1,5 @@
 <template>
   <div class="wrapper">
-    <div v-if="false" id="loading"></div>
     <notifications></notifications>
     <side-bar>
       <template slot="links">
@@ -128,9 +127,10 @@
         </b-nav>
       </template>
     </side-bar>
-    <div class="main-content">
+    <div class="main-content container-loading">
+      <LoadingPanel v-if="loading" />
       <dashboard-navbar :type="$route.meta.navbarType"></dashboard-navbar>
-
+      <!-- <div id="loading" v-if="!loading"></div> -->
       <div @click="$sidebar.displaySidebar(false)">
         <fade-transition :duration="200" origin="center top" mode="out-in">
           <!-- your content here -->
@@ -164,7 +164,11 @@ function initScrollbar(className) {
 import DashboardNavbar from "./DashboardNavbar.vue";
 import ContentFooter from "./ContentFooter.vue";
 import DashboardContent from "./Content.vue";
+import LoadingPanel from "../../components/LoadingPanel.vue";
 import { FadeTransition } from "vue2-transitions";
+import { createNamespacedHelpers } from "vuex";
+
+const { mapGetters } = createNamespacedHelpers("coreModule");
 
 export default {
   components: {
@@ -172,6 +176,7 @@ export default {
     ContentFooter,
     DashboardContent,
     FadeTransition,
+    LoadingPanel,
   },
   data() {
     return {
@@ -195,41 +200,11 @@ export default {
       }
     },
   },
+  computed: {
+    ...mapGetters(["loading"]),
+  },
   mounted() {
     this.initScrollbar();
   },
 };
 </script>
-<style lang="css">
-#loading {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 9999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#loading::before {
-  content: "";
-  border: 4px solid #f3f3f3;
-  border-top: 4px solid #3498db;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-</style>

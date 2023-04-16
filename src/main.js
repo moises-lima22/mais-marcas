@@ -1,14 +1,15 @@
 import Vue from "vue";
+import App from "@/modules/core/App.vue";
 
 import DashboardPlugin from "@/modules/core/plugins/dashboard-plugin";
 
-import CoreModule from "./modules/core/core-modules.js";
 import router from "./modules/router";
 import store from "./modules/store";
 
 Vue.use(DashboardPlugin);
 
-(function coreModule() {
-  const coreModule = new CoreModule(router, store);
-  coreModule.install(Vue);
-})();
+new Vue({
+  router: router,
+  store: store,
+  render: (h) => h(App),
+}).$mount("#app");

@@ -1,11 +1,14 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import globalModule from "../core/store";
+import coreModule from "../core/store";
 
 Vue.use(Vuex);
 
-export default new Vuex.Store({
+const store = new Vuex.Store({
+  strict: process.env.NODE_ENV !== "production",
   modules: {
-    globalModule,
+    coreModule,
   },
 });
+
+export default store;
