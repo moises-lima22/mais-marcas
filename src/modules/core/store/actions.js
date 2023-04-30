@@ -1,7 +1,10 @@
-import { setLoading } from "./actions-type";
+import { LOADING_MUTATION } from "./mutations-type";
 
 export const actions = {
-  [setLoading](state, payload) {
-    state.isLoading = payload;
+  startLoading({ commit }) {
+    commit(LOADING_MUTATION, true);
+  },
+  dismissLoading({ commit }) {
+    commit(LOADING_MUTATION, false);
   },
 };

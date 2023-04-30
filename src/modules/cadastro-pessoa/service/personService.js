@@ -9,8 +9,14 @@ export const getPersons = async () => {
 };
 
 export const savePerson = async (person) => {
-  const url = `${BASE_URL}/save`;
-  const response = await createRestRequest(axios.post(url, { person }));
+  const url = `${BASE_URL}/create`;
+  const response = await createRestRequest(axios.post(url, { ...person }));
+  return response;
+};
+
+export const updatePerson = async (person) => {
+  const url = `${BASE_URL}`;
+  const response = await createRestRequest(axios.put(url, { ...person }));
   return response;
 };
 

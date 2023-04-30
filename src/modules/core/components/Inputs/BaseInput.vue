@@ -8,7 +8,7 @@
     <b-form-group>
       <slot name="label">
         <label v-if="label" class="m-0" :class="labelClasses">
-          {{ label }}
+          {{ label }} <span v-show="required">*</span>
         </label>
       </slot>
       <div
