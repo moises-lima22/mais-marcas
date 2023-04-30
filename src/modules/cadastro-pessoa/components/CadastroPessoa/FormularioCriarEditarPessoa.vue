@@ -275,7 +275,7 @@
       </validation-observer>
       <b-row class="mt-4" slot="footer">
         <b-col cols="12" class="text-right">
-          <a href="#!" class="btn" name="btnVoltar" @click="goBack()">Voltar</a>
+          <a class="btn" name="btnVoltar" @click="goBack()">Voltar</a>
           <b-button
             name="btnPersonSave"
             variant="primary"
