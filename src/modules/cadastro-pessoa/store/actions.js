@@ -3,7 +3,7 @@ import { getPersons } from "@/modules/cadastro-pessoa/service/personService";
 
 export const actions = {
   async buscarPessoas({ commit }) {
-    const response = await getPersons(this.person);
+    const response = await getPersons();
 
     if (response.hasError) {
       return response;
