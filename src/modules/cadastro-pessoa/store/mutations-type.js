@@ -1,0 +1,1 @@
+export const LISTA_PESSOAS = "LISTA_PESSOAS";

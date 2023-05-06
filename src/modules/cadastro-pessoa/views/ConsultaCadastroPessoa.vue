@@ -13,12 +13,17 @@
 <script>
 import CardConsultaCadastroPessoa from "../components/ConsultaPessoa/CardConsultaCadastroPessoa.vue";
 import CardListagemPessoa from "../components/ConsultaPessoa/CardListagemPessoa.vue";
+import { mapActions } from "vuex";
 
 export default {
   name: "consulta-cadastro-pessoa",
   components: {
     CardConsultaCadastroPessoa,
     CardListagemPessoa,
+  },
+  mounted() {},
+  methods: {
+    ...mapActions("cadastroPessoaModule", ["buscarPessoas"]),
   },
 };
 </script>

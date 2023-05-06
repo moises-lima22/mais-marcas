@@ -366,6 +366,7 @@ export default {
       }
       this.$notify.success("Cadastro salvo com sucesso");
       this.dismissLoading();
+      this.goBack();
     },
     async searchCep() {
       const cepRegex = /^[0-9]{5}-?[0-9]{3}$/;
