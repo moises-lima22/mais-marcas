@@ -11,7 +11,10 @@ const AuthService = {
     try {
       const response = await axios.post(
         "/auth/signin",
-        { username, password },
+        {
+          username,
+          password,
+        },
         {
           headers: {
             Authorization: null,
@@ -36,16 +39,5 @@ const AuthService = {
     delete axios.defaults.headers.common["Authorization"];
   },
 };
-
-// function handleApiResponse(requestFn: () => {}) {
-//     try {
-//       const { data } = await requestFn();
-//       response.content = data;
-//     } catch (e) {
-//       response.error = remoteError(e);
-//     }
-
-//     return response;
-//   }
 
 export default AuthService;

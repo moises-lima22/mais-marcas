@@ -30,13 +30,13 @@
               <div class="text-center text-muted mb-4">
                 <small>Entre com suas credenciais</small>
               </div>
-              <validation-observer ref="formValidator">
-                <b-form role="form" @submit.prevent="handleSubmit()">
+              <validation-observer ref="formLogin">
+                <b-form>
                   <base-input
-                    alternative
                     class="mb-3"
+                    required
                     name="Email"
-                    :rules="{ required: true, email: true }"
+                    :rules="{ email: true }"
                     prepend-icon="ni ni-email-83"
                     placeholder="Email"
                     v-model="username"
@@ -44,9 +44,9 @@
                   </base-input>
 
                   <base-input
-                    alternative
                     class="mb-3"
                     name="Password"
+                    required
                     :rules="{ required: true, min: 6 }"
                     prepend-icon="ni ni-lock-circle-open"
                     type="password"
@@ -55,33 +55,19 @@
                   >
                   </base-input>
 
-                  <b-form-checkbox v-model="rememberMe"
-                    >lembre de min</b-form-checkbox
-                  >
                   <div class="text-center">
-                    <base-button
+                    <el-button
                       type="primary"
-                      native-type="submit"
-                      class="my-4"
-                      >Entrar</base-button
+                      :loading="loadingButtom"
+                      @click="handleSubmit()"
                     >
+                      Entrar
+                    </el-button>
                   </div>
                 </b-form>
               </validation-observer>
             </b-card-body>
           </b-card>
-          <!-- <b-row class="mt-3">
-            <b-col cols="6">
-              <router-link to="/dashboard" class="text-light"
-                ><small>Forgot password?</small></router-link
-              >
-            </b-col>
-            <b-col cols="6" class="text-right">
-              <router-link to="/register" class="text-light"
-                ><small>Create new account</small></router-link
-              >
-            </b-col>
-          </b-row> -->
         </b-col>
       </b-row>
     </b-container>
@@ -93,9 +79,12 @@ import AuthService from "../../services/auth/api-auth";
 export default {
   data() {
     return {
+      // username: null,
+      // password: null,
       username: "moises.lima@nexus-softwares.online",
       password: "Masterns@23",
       rememberMe: false,
+      loadingButtom: false,
     };
   },
   computed: {
@@ -105,12 +94,18 @@ export default {
   },
   methods: {
     async handleSubmit() {
-      if (!this.isFormValid) return console.log("vazio");
+      const isValid = await this.$refs.formLogin.validate();
+
+      if (!isValid) return;
+
       try {
+        this.loadingButtom = true;
         await AuthService.login(this.username, this.password);
         this.$router.push("/");
       } catch (error) {
-        console.log(error);
+        this.$notify.error("Usuário ou senha inválidos");
+      } finally {
+        this.loadingButtom = false;
       }
     },
   },

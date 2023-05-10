@@ -21,8 +21,11 @@
         ]"
       >
         <div v-if="prependIcon || $slots.prepend" class="input-group-prepend">
-          <span class="input-group-text">
-            <slot name="prepend" class="">
+          <span
+            class="input-group-text"
+            :class="{ 'border-red': validated && invalid }"
+          >
+            <slot name="prepend">
               <i :class="prependIcon"></i>
             </slot>
           </span>
@@ -238,5 +241,9 @@ export default {
 
 .icon-large {
   font-size: 24px;
+}
+
+.border-red {
+  border-color: #fb6340 !important;
 }
 </style>
