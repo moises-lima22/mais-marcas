@@ -8,12 +8,20 @@ module.exports = {
   runtimeCompiler: true,
   lintOnSave: true,
   configureWebpack: {
+    module: {
+      rules: [
+        {
+          test: /\.mjs$/,
+          include: /node_modules/,
+          type: "javascript/auto",
+        },
+      ],
+    },
     // Set up all the aliases we use in our app.
     resolve: {
       alias: {
         assets: resolveSrc("src/modules/core/assets"),
       },
-      
     },
   },
   css: {

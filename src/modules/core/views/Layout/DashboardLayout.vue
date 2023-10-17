@@ -127,9 +127,10 @@
         </b-nav>
       </template>
     </side-bar>
-    <div class="main-content">
+    <div class="main-content container-loading">
+      <LoadingPanel v-if="loading" />
       <dashboard-navbar :type="$route.meta.navbarType"></dashboard-navbar>
-
+      <!-- <div id="loading" v-if="!loading"></div> -->
       <div @click="$sidebar.displaySidebar(false)">
         <fade-transition :duration="200" origin="center top" mode="out-in">
           <!-- your content here -->
@@ -163,7 +164,11 @@ function initScrollbar(className) {
 import DashboardNavbar from "./DashboardNavbar.vue";
 import ContentFooter from "./ContentFooter.vue";
 import DashboardContent from "./Content.vue";
+import LoadingPanel from "../../components/LoadingPanel.vue";
 import { FadeTransition } from "vue2-transitions";
+import { createNamespacedHelpers } from "vuex";
+
+const { mapGetters } = createNamespacedHelpers("coreModule");
 
 export default {
   components: {
@@ -171,6 +176,21 @@ export default {
     ContentFooter,
     DashboardContent,
     FadeTransition,
+    LoadingPanel,
+  },
+  data() {
+    return {
+      svg: `
+        <path class="path" d="
+          M 30 15
+          L 28 17
+          M 25.61 25.61
+          A 15 15, 0, 0, 1, 15 30
+          A 15 15, 0, 1, 1, 27.99 7.5
+          L 15 15
+        " style="stroke-width: 4px; fill: rgba(0, 0, 0, 0)"/>
+      `,
+    };
   },
   methods: {
     initScrollbar() {
@@ -180,9 +200,11 @@ export default {
       }
     },
   },
+  computed: {
+    ...mapGetters(["loading"]),
+  },
   mounted() {
     this.initScrollbar();
   },
 };
 </script>
-<style lang="scss"></style>

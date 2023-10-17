@@ -19,7 +19,7 @@ import locale from "element-ui/lib/locale";
 locale.use(lang);
 
 //Vue mask
-import VueMask from "v-mask";
+import VueTheMask from "vue-the-mask";
 
 // vue-bootstrap
 import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
@@ -42,7 +42,7 @@ export default {
     Vue.use(GlobalComponents);
     Vue.use(GlobalDirectives);
     Vue.use(SideBar);
-    Vue.use(VueMask);
+    Vue.use(VueTheMask);
     Vue.use(Notifications);
     Vue.use(BootstrapVue);
     Vue.use(ElementUI);

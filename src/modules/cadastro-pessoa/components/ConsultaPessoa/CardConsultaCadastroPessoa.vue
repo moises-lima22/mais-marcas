@@ -44,7 +44,7 @@
       <b-row class="m-0">
         <div class="ml-auto">
           <a href="#!" class="btn">Limpar</a>
-          <b-button variant="primary">Consultar</b-button>
+          <b-button variant="primary" @click="consultar">Consultar</b-button>
         </div>
       </b-row>
     </b-card-body>
@@ -59,15 +59,14 @@ export default {
     };
   },
   methods: {
-    teste(v) {
-      console.log(v);
-    },
     novoCadastro() {
       this.$router.push({ name: "novo-cadastro-pessoa" });
       return;
     },
+    consultar() {
+      this.$emit("consultar");
+    },
   },
-  mounted() {},
 };
 </script>
 <style scoped></style>

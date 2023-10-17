@@ -1,10 +1,13 @@
 {
-  "name": "bootstrap-vue-argon-dashboard",
+  "name": "mais-marcas-dashboard",
   "version": "1.0.0",
   "private": true,
+  "description": "Gestão de produção",
+  "author": "Mais marcas - https://www.maismarcas.online/",
   "scripts": {
     "serve": "vue-cli-service serve --open",
     "build": "vue-cli-service build",
+    "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "dev": "npm run serve"
   },
@@ -13,7 +16,7 @@
     "bootstrap": "4.3.1",
     "bootstrap-vue": "^2.5.0",
     "chart.js": "^2.9.3",
-    "d3": "^5.7.0",
+    "d3": "^7.8.4",
     "datamaps": "^0.5.9",
     "date-fns": "^1.30.1",
     "dropzone": "^5.5.1",
@@ -25,26 +28,32 @@
     "jose": "^4.13.1",
     "nouislider": "^12.1.0",
     "perfect-scrollbar": "^1.3.0",
+    "pinia": "^2.0.36",
     "quill": "^1.3.6",
     "sweetalert2": "^9.5.4",
-    "v-mask": "^2.3.0",
     "vee-validate": "^3.2.1",
     "vue": "^2.7.14",
     "vue-chartjs": "^3.5.0",
     "vue-clipboard2": "^0.3.0",
     "vue-flatpickr-component": "^8.1.2",
     "vue-modules": "^0.3.0",
-    "vue-router": "^3.0.6",
+    "vue-router": "^3.6.5",
+    "vue-the-mask": "^0.11.1",
     "vue2-transitions": "^0.2.3",
-    "vuex": "^4.1.0",
-    "vuex-class": "^0.3.2"
+    "vuex": "^3.6.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.7.0",
     "@vue/cli-plugin-eslint": "^3.7.0",
+    "@vue/cli-plugin-unit-jest": "^5.0.8",
     "@vue/cli-service": "^3.7.0",
     "@vue/eslint-config-prettier": "^4.0.1",
+    "@vue/test-utils": "^1.1.3",
+    "@vue/vue2-jest": "^27.0.0-alpha.2",
+    "axios-mock-adapter": "^1.21.4",
+    "babel-jest": "^27.0.6",
     "babel-plugin-component": "^1.1.0",
+    "jest": "^27.0.5",
     "node-sass": "^4.12.0",
     "sass-loader": "^7.1.0",
     "vue-template-compiler": "^2.6.11"
@@ -58,7 +67,5 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 10"
-  ],
-  "author": "Creative Tim - https://www.creative-tim.com/",
-  "description": "BootstrapVue Argon Dashboard"
+  ]
 }

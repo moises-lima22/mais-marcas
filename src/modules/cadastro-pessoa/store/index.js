@@ -3,7 +3,7 @@ import { mutations } from "./mutations";
 import { getters } from "./getters";
 import { actions } from "./actions";
 
-const coreModule = {
+const cadastroPessoaModule = {
   namespaced: true,
   state,
   mutations,
@@ -11,4 +11,4 @@ const coreModule = {
   actions,
 };
 
-export default coreModule;
+export default cadastroPessoaModule;

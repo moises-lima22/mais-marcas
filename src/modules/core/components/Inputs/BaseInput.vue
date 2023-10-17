@@ -8,7 +8,7 @@
     <b-form-group>
       <slot name="label">
         <label v-if="label" class="m-0" :class="labelClasses">
-          {{ label }}
+          {{ label }} <span v-show="required">*</span>
         </label>
       </slot>
       <div
@@ -21,24 +21,36 @@
         ]"
       >
         <div v-if="prependIcon || $slots.prepend" class="input-group-prepend">
-          <span class="input-group-text">
-            <slot name="prepend" class="">
+          <span
+            class="input-group-text"
+            :class="{ 'border-red': validated && invalid }"
+          >
+            <slot name="prepend">
               <i :class="prependIcon"></i>
             </slot>
           </span>
         </div>
         <slot v-bind="slotData">
           <input
+            :name="name"
             :value="value"
             :type="type"
             v-on="listeners"
             v-bind="$attrs"
             :valid="valid"
             :required="required"
+            :disabled="disabled"
             class="form-control"
             :class="[
               { 'is-valid': valid && validated && successMessage },
               { 'is-invalid': invalid && validated },
+              {
+                'is-filled':
+                  filled &&
+                  value !== undefined &&
+                  value !== null &&
+                  value !== '',
+              },
               inputClasses,
             ]"
           />
@@ -65,7 +77,11 @@
         </div>
       </slot>
       <slot name="error">
-        <div v-if="errors[0]" class="invalid-feedback" style="display: block">
+        <div
+          v-if="errors[0] && errorDetails"
+          class="invalid-feedback"
+          style="display: block"
+        >
           {{ errors[0] }}
         </div>
       </slot>
@@ -97,6 +113,11 @@ export default {
     error: {
       type: String,
       description: "Input error (below input)",
+    },
+    errorDetails: {
+      type: Boolean,
+      description: "Input error details ",
+      default: false,
     },
     successMessage: {
       type: String,
@@ -146,6 +167,14 @@ export default {
       type: String,
       description: "Input name (used for validation)",
       default: "",
+    },
+    disabled: {
+      type: Boolean,
+      description: "Whether input is disabled",
+    },
+    filled: {
+      type: Boolean,
+      description: "Whether input is filled",
     },
   },
   data() {
@@ -212,5 +241,9 @@ export default {
 
 .icon-large {
   font-size: 24px;
+}
+
+.border-red {
+  border-color: #fb6340 !important;
 }
 </style>
