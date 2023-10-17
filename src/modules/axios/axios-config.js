@@ -1,7 +1,8 @@
 import axios from "axios";
 
-// Configura a URL base da API
-axios.defaults.baseURL = process.env.VUE_APP_BASE_URL;
+const BASE_URL = "http://localhost:8888";
+
+axios.defaults.baseURL = BASE_URL;
 
 const _accessToken = localStorage.getItem("accessToken");
 
